@@ -16,5 +16,7 @@ class GovermentHomePresenter {
 
 
 extension GovermentHomePresenter: GovermentHomePresenterProtocol {
-    
+    func requestNextValuesList() {
+        
+    }
 }

@@ -8,14 +8,16 @@
 import UIKit
 
 protocol GovermentHomeViewUIDelegate {
-    func getFilterString(filter: String)
+    func notifyGetFilterString(filter: String)
+    func addNewValues()
 }
 
 class GovermentHomeViewUI: UIView {
     var delegate: GovermentHomeViewUIDelegate?
     var navigationController: UINavigationController?
-    internal var originalElementList: [Result]?
-    lazy var elementList: [Result] = originalElementList ?? [Result]()
+    internal var originalElementList: [Result] = []
+    lazy var elementList: [Result] = originalElementList
+    var isSendingRequest = false
     
     lazy var searchBar: Goverment_TextField = {
         let textField = Goverment_TextField(placeholder: "Insert id to track")
@@ -33,11 +35,11 @@ class GovermentHomeViewUI: UIView {
         return tableView
     }()
     
-    public convenience init(navigation: UINavigationController, delegate: GovermentHomeViewUIDelegate, responseData: Response) {
+    public convenience init(navigation: UINavigationController, delegate: GovermentHomeViewUIDelegate, responseData: [Result]) {
         self.init()
         self.delegate = delegate
         self.navigationController = navigation
-        self.originalElementList = responseData.results
+        self.originalElementList = responseData
         
         setUI()
         setConstraints()
@@ -81,7 +83,14 @@ class GovermentHomeViewUI: UIView {
     }
     
     @objc func searchInfoWithDelay() {
-        delegate?.getFilterString(filter: searchBar.text ?? "")
+        delegate?.notifyGetFilterString(filter: searchBar.text ?? "")
+    }
+    
+    func addNewItemsFrom(list: [Result]) {
+        originalElementList += list
+        elementList = originalElementList
+        tableView.reloadData()
+        isSendingRequest = false
     }
 }
 
@@ -94,5 +103,16 @@ extension GovermentHomeViewUI: UITableViewDelegate,  UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GovermentTableViewCell", for: indexPath) as! GovermentTableViewCell
         cell.titleLabel.text = elementList[indexPath.row].id
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+
+        if distanceFromBottom - 100 < height && !isSendingRequest {
+            isSendingRequest = true
+            delegate?.addNewValues()
+        }
     }
 }

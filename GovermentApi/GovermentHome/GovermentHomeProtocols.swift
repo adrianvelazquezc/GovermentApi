@@ -8,7 +8,9 @@
 import Foundation
 
 protocol GovermentHomeViewProtocol: AnyObject {
-    
+    func notifyError(error: String)
+    func showLoading()
+    func dissmissLoading()
 }
 
 protocol GovermentHomeInteractorProtocol: AnyObject {
