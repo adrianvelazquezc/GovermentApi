@@ -21,7 +21,7 @@ struct Result: Codable {
     let fact: String
     let organization: String
     let resource: String
-    let url: URL
+    let url: String
     let operations: String
     let dataset: String
     let createdAt: Int
