@@ -11,7 +11,7 @@ open class Goverment_ActivityIndicator {
     
     private static let tagView = -1
     
-    private static var movieIndicator: UIActivityIndicatorView = {
+    private static var gobIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.tintColor = .gray
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -29,15 +29,15 @@ open class Goverment_ActivityIndicator {
         mainView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainView.tag = tagView
         
-        mainView.addSubview(movieIndicator)
+        mainView.addSubview(gobIndicator)
         parent.addSubview(mainView)
-        movieIndicator.startAnimating()
+        gobIndicator.startAnimating()
         
             NSLayoutConstraint.activate([
-                movieIndicator.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
-                movieIndicator.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
-                movieIndicator.heightAnchor.constraint(equalToConstant: 50),
-                movieIndicator.widthAnchor.constraint(equalToConstant: 50),
+                gobIndicator.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+                gobIndicator.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
+                gobIndicator.heightAnchor.constraint(equalToConstant: 50),
+                gobIndicator.widthAnchor.constraint(equalToConstant: 50),
             ])
     }
     
@@ -47,6 +47,6 @@ open class Goverment_ActivityIndicator {
         if let loaderView = parent.viewWithTag(tagView) {
             loaderView.removeFromSuperview()
         }
-        movieIndicator.stopAnimating()
+        gobIndicator.stopAnimating()
     }
 }
