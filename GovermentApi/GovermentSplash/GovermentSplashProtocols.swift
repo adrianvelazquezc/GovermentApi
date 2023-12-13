@@ -20,6 +20,7 @@ protocol GovermentSplashInteractorProtocol: AnyObject {
 protocol GovermentSplashPresenterProtocol: AnyObject {
     func requestInfo()
     func responseInfo(responseData: Response)
+    func responseErrorInfo(error: String)
 }
 
 protocol GovermentSplashRouterProtocol: AnyObject {

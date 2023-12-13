@@ -24,4 +24,9 @@ extension GovermentSplashPresenter: GovermentSplashPresenterProtocol {
         view?.dissmissLoading()
         router?.navigateToNextView(responseData: responseData)
     }
+    
+    func responseErrorInfo(error: String) {
+        view?.dissmissLoading()
+        view?.notifyError(error: error)
+    }
 }

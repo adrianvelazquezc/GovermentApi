@@ -18,11 +18,22 @@ extension GovermentSplashInteractor: GovermentSplashInteractorProtocol {
             var urlRequest = URLRequest(url: urlObject)
             urlRequest.httpMethod = "GET"
             
-            let task = URLSession.shared.dataTask(with: urlRequest) { responseData, responseCode, responseError in
+            let task = URLSession.shared.dataTask(with: urlRequest) { responseData, response, error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        self.presenter?.responseErrorInfo(error: error.localizedDescription)
+                    }
+                    return
+                }
                 if let response = responseData {
-                    if let jsonResponse = try? JSONDecoder().decode(Response.self, from: response) {
+                    do {
+                        let jsonResponse = try JSONDecoder().decode(Response.self, from: response)
                         DispatchQueue.main.async {
                             self.presenter?.responseInfo(responseData: jsonResponse)
+                        }
+                    } catch let decodingError {
+                        DispatchQueue.main.async {
+                            self.presenter?.responseErrorInfo(error: decodingError.localizedDescription)
                         }
                     }
                 }

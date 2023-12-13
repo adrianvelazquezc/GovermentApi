@@ -22,8 +22,8 @@ class GovermentLoginView: UIViewController {
 
 extension GovermentLoginView: GovermentLoginViewProtocol {
     func notifyError(error: String) {
-//        ui?.errorLabel.isHidden = false
-//        ui?.errorLabel.text = error
+        let alert = Goverment_Alert(parentView: self.view, delegate: nil, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "Retry")
+            alert.show()
     }
     
     func showLoading() {

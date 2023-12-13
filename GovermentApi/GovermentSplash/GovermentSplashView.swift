@@ -12,7 +12,7 @@ class GovermentSplashView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .link
+        view.backgroundColor = .white
         Goverment_ActivityIndicator.show(parent: self.view)
         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
             self.presenter?.requestInfo()
@@ -23,8 +23,8 @@ class GovermentSplashView: UIViewController {
 
 extension GovermentSplashView: GovermentSplashViewProtocol {
     func notifyError(error: String) {
-//        ui?.errorLabel.isHidden = false
-//        ui?.errorLabel.text = error
+        let alert = Goverment_Alert(parentView: self.view, delegate: self, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "Retry")
+            alert.show()
     }
     
     func showLoading() {
@@ -40,3 +40,12 @@ extension GovermentSplashView: GovermentSplashViewProtocol {
     }
 }
 
+extension GovermentSplashView: Goverment_AlertProtocol {
+    func notifyAccept() {
+        presenter?.requestInfo()
+    }
+    
+    func notifyCancel() {
+        presenter?.requestInfo()
+    }
+}

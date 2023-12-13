@@ -102,7 +102,7 @@ extension GovermentHomeViewUI: UITableViewDelegate,  UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GovermentTableViewCell", for: indexPath) as! GovermentTableViewCell
         cell.idLabel.text = elementList[indexPath.row].id
-        cell.slugLabel.text = elementList[indexPath.row].slug.uppercased()
+//        cell.slugLabel.text = elementList[indexPath.row].slug.uppercased()
         cell.urlLabel.text = "\(elementList[indexPath.row].url)"
         return cell
     }
