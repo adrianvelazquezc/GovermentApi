@@ -22,8 +22,10 @@ class GovermentLoginView: UIViewController {
 
 extension GovermentLoginView: GovermentLoginViewProtocol {
     func notifyError(error: String) {
-        let alert = Goverment_Alert(parentView: self.view, delegate: nil, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "Retry")
+        DispatchQueue.main.async {
+            let alert = Goverment_Alert(parentView: self.view, delegate: nil, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "OK")
             alert.show()
+        }
     }
     
     func showLoading() {
@@ -41,14 +43,32 @@ extension GovermentLoginView: GovermentLoginViewProtocol {
 
 extension GovermentLoginView: GovermentLoginViewUIDelegate {
     func notifyRegisterUser(userInfo: UserInfo) {
-        presenter?.requestNewUserLogin(userInfo: userInfo)
+        Goverment_NetworkAvailable.checkInternet { isConnected in
+            if isConnected {
+                self.presenter?.requestNewUserLogin(userInfo: userInfo)
+            } else {
+                self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+            }
+        }
     }
     
     func notifyCheckUserLogin(userInfo: UserInfo) {
-        presenter?.requestUserLogin(userInfo: userInfo)
+        Goverment_NetworkAvailable.checkInternet { isConnected in
+            if isConnected {
+                self.presenter?.requestUserLogin(userInfo: userInfo)
+            } else {
+                self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+            }
+        }
     }
     
     func notifyCheckGoogleLogin() {
-        presenter?.requestCheckGoogleLogin()
+        Goverment_NetworkAvailable.checkInternet { isConnected in
+            if isConnected {
+                self.presenter?.requestCheckGoogleLogin()
+            } else {
+                self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+            }
+        }
     }
 }

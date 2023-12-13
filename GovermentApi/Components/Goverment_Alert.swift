@@ -47,7 +47,8 @@ open class Goverment_Alert: UIView {
     
     private lazy var lbDescription: UILabel = {
         let label = UILabel(frame: .zero)
-        label.numberOfLines = 8
+        label.numberOfLines = 3
+        label.textColor = .black
         label.textAlignment = .center
         label.minimumScaleFactor = 0.6
         label.adjustsFontSizeToFitWidth = true
@@ -88,13 +89,11 @@ open class Goverment_Alert: UIView {
                             message: String,
                             isCloseEnabled: Bool = true,
                             btnAcceptTitle: String = "Accept"
-//                            tag: Int = 0
     ){
         
         self.init(frame: UIScreen.main.bounds)
         backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
         
-//        self.tag = tag
         self.parentView = parentView
         self.delegate = delegate
         btnClose.isHidden = !isCloseEnabled

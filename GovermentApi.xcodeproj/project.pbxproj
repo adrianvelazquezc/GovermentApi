@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CEB2FA132B294417008E183E /* Goverment_Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA122B294417008E183E /* Goverment_Alert.swift */; };
+		CEB2FA152B294EE3008E183E /* Goverment_NetworkAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA142B294EE3008E183E /* Goverment_NetworkAvailable.swift */; };
 		CEC4F9D52B28F4CD00C80226 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4F9D42B28F4CD00C80226 /* AppDelegate.swift */; };
 		CEC4F9DE2B28F4CE00C80226 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC4F9DD2B28F4CE00C80226 /* Assets.xcassets */; };
 		CEC4F9E12B28F4CE00C80226 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC4F9DF2B28F4CE00C80226 /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		CEB2FA122B294417008E183E /* Goverment_Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_Alert.swift; sourceTree = "<group>"; };
+		CEB2FA142B294EE3008E183E /* Goverment_NetworkAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_NetworkAvailable.swift; sourceTree = "<group>"; };
 		CEC4F9D12B28F4CD00C80226 /* GovermentApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovermentApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4F9D42B28F4CD00C80226 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC4F9DD2B28F4CE00C80226 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				CEC4FA0D2B29140D00C80226 /* Goverment_TextField.swift */,
 				CEC4FA0B2B2913E000C80226 /* Goverment_ActivityIndicator.swift */,
 				CEB2FA122B294417008E183E /* Goverment_Alert.swift */,
+				CEB2FA142B294EE3008E183E /* Goverment_NetworkAvailable.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				CEC4FA022B28FAD200C80226 /* GovermentHomeViewUI.swift in Sources */,
 				CEC4FA082B28FAD200C80226 /* GovermentHomeView.swift in Sources */,
 				CEC4F9F72B28F53E00C80226 /* GovermentLoginView.swift in Sources */,
+				CEB2FA152B294EE3008E183E /* Goverment_NetworkAvailable.swift in Sources */,
 				CEC4F9D52B28F4CD00C80226 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

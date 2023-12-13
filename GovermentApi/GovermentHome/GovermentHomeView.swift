@@ -27,8 +27,10 @@ class GovermentHomeView: UIViewController {
 
 extension GovermentHomeView: GovermentHomeViewProtocol {
     func notifyError(error: String) {
-        let alert = Goverment_Alert(parentView: self.view, delegate: nil, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "Retry")
+        DispatchQueue.main.async {
+            let alert = Goverment_Alert(parentView: self.view, delegate: nil, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "OK")
             alert.show()
+        }
     }
     
     func showLoading() {

@@ -15,7 +15,13 @@ class GovermentSplashView: UIViewController {
         view.backgroundColor = .white
         Goverment_ActivityIndicator.show(parent: self.view)
         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-            self.presenter?.requestInfo()
+            Goverment_NetworkAvailable.checkInternet { (isConnected) in
+                if isConnected {
+                    self.presenter?.requestInfo()
+                } else {
+                    self.notifyError(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
+                }
+            }
             Goverment_ActivityIndicator.remove(parent: self.view)
         }
     }
@@ -23,8 +29,10 @@ class GovermentSplashView: UIViewController {
 
 extension GovermentSplashView: GovermentSplashViewProtocol {
     func notifyError(error: String) {
-        let alert = Goverment_Alert(parentView: self.view, delegate: self, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "Retry")
+        DispatchQueue.main.async {
+            let alert = Goverment_Alert(parentView: self.view, delegate: self, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "Retry")
             alert.show()
+        }
     }
     
     func showLoading() {
