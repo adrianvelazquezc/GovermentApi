@@ -22,6 +22,13 @@ class GovermentDetailsView: UIViewController {
             view = ui
         }
     }
+    
+    func notifyError(error: String) {
+        DispatchQueue.main.async {
+            let alert = Goverment_Alert(parentView: self.view, delegate: nil, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "OK")
+            alert.show()
+        }
+    }
 }
 
 extension GovermentDetailsView: GovermentDetailsViewProtocol {
@@ -34,10 +41,10 @@ extension GovermentDetailsView: GovermentDetailsViewUIDelegate {
                     if UIApplication.shared.canOpenURL(url) {
                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     } else {
-                        print("WhatsApp no está instalado en el dispositivo.")
+                        notifyError(error: "WhatsApp is not installed in this device")
                     }
                 } else {
-                    print("Error al construir la URL de WhatsApp.")
+                    notifyError(error: "Error building Whatsapp URL")
                 }
     }
 }

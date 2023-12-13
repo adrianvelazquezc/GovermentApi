@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let locationManager = CLLocationManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let nav = UINavigationController()
@@ -18,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
+        locationManager.requestAlwaysAuthorization()
         let vc = GovermentSplashMain.createModule(navigation: nav)
         nav.pushViewController(vc, animated: true)
         return true
