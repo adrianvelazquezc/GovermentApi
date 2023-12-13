@@ -29,5 +29,15 @@ extension GovermentDetailsView: GovermentDetailsViewProtocol {
 }
 
 extension GovermentDetailsView: GovermentDetailsViewUIDelegate {
-    
+    func notifyShareInfoToWhatsapp(info: String) {
+        if let url = URL(string: "whatsapp://send?text=\(info.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") {
+                    if UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        print("WhatsApp no está instalado en el dispositivo.")
+                    }
+                } else {
+                    print("Error al construir la URL de WhatsApp.")
+                }
+    }
 }

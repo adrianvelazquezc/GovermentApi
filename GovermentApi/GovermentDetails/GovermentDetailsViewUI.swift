@@ -8,7 +8,7 @@
 import UIKit
 
 protocol GovermentDetailsViewUIDelegate {
-    
+    func notifyShareInfoToWhatsapp(info: String)
 }
 
 class GovermentDetailsViewUI: UIView {
@@ -20,6 +20,7 @@ class GovermentDetailsViewUI: UIView {
         title.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Details"
+        title.textColor = .black
         return title
     }()
     
@@ -45,6 +46,7 @@ class GovermentDetailsViewUI: UIView {
         title.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Id: "
+        title.textColor = .black
         return title
     }()
     
@@ -61,6 +63,7 @@ class GovermentDetailsViewUI: UIView {
         title.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Date insert: "
+        title.textColor = .black
         return title
     }()
     
@@ -77,6 +80,7 @@ class GovermentDetailsViewUI: UIView {
         title.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Organization: "
+        title.textColor = .black
         return title
     }()
     
@@ -93,6 +97,7 @@ class GovermentDetailsViewUI: UIView {
         title.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Fact: "
+        title.textColor = .black
         return title
     }()
     
@@ -109,6 +114,7 @@ class GovermentDetailsViewUI: UIView {
         title.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "URL: "
+        title.textColor = .black
         return title
     }()
     
@@ -118,6 +124,16 @@ class GovermentDetailsViewUI: UIView {
         label.numberOfLines = 0
         label.textColor = .black
         return label
+    }()
+    
+    lazy var shareButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Share", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        button.backgroundColor =   #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        button.layer.cornerRadius = 25
+        return button
     }()
     
     public convenience init(navigation: UINavigationController,
@@ -155,6 +171,7 @@ class GovermentDetailsViewUI: UIView {
         scrollView.addSubview(factLabel)
         scrollView.addSubview(urlLabelTitle)
         scrollView.addSubview(urlLabel)
+        scrollView.addSubview(shareButton)
     }
     
     func setConstraints() {
@@ -212,7 +229,12 @@ class GovermentDetailsViewUI: UIView {
             urlLabel.topAnchor.constraint(equalTo: urlLabelTitle.bottomAnchor, constant: 5),
             urlLabel.leadingAnchor.constraint(equalTo: idLabelTitle.leadingAnchor),
             urlLabel.trailingAnchor.constraint(equalTo: idLabelTitle.trailingAnchor),
-            urlLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 20),
+            
+            shareButton.topAnchor.constraint(equalTo: urlLabel.bottomAnchor, constant: 20),
+            shareButton.widthAnchor.constraint(equalToConstant: 80),
+            shareButton.heightAnchor.constraint(equalToConstant: 50),
+            shareButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            shareButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 20),
         ])
     }
     
@@ -236,5 +258,8 @@ class GovermentDetailsViewUI: UIView {
         if let navController = self.navigationController {
             navController.popViewController(animated: true)
         }
+    }
+    @objc func buttonTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.notifyShareInfoToWhatsapp(info: "Id: \(idLabel.text ?? ""),\n Organization: \(organizationLabel.text ?? ""),\n Fact: \(factLabel.text ?? ""),\n Url: \(urlLabel.text ?? ""),\n Date inserted: \(dateInsertLabel.text ?? "").")
     }
 }
