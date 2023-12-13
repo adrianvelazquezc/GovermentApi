@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class GovermentDetailsView: UIViewController {
     var presenter: GovermentDetailsPresenterProtocol?
     private var ui: GovermentDetailsViewUI?
     internal var elementDetail: Result?
+    let locationManager = CLLocationManager()
     
     override func loadView() {
         if let noNilDetail = elementDetail {
@@ -21,6 +23,11 @@ class GovermentDetailsView: UIViewController {
             )
             view = ui
         }
+    }
+    override func viewDidLoad() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     func notifyError(error: String) {
@@ -37,14 +44,29 @@ extension GovermentDetailsView: GovermentDetailsViewProtocol {
 
 extension GovermentDetailsView: GovermentDetailsViewUIDelegate {
     func notifyShareInfoToWhatsapp(info: String) {
-        if let url = URL(string: "whatsapp://send?text=\(info.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") {
-                    if UIApplication.shared.canOpenURL(url) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    } else {
-                        notifyError(error: "WhatsApp is not installed in this device")
-                    }
+        if let currentLocation = locationManager.location {
+            let latitude = currentLocation.coordinate.latitude
+            let longitude = currentLocation.coordinate.longitude
+            
+            let infoWithLocation = "\(info)\nCurrent Location: Lat \(latitude), Lon \(longitude)"
+            
+            if let url = URL(string: "whatsapp://send?text=\(infoWithLocation.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 } else {
-                    notifyError(error: "Error building Whatsapp URL")
+                    notifyError(error: "WhatsApp is not installed in this device")
                 }
+            } else {
+                notifyError(error: "Error building WhatsApp URL")
+            }
+        } else {
+            notifyError(error: "Location information not available")
+        }
+    }
+}
+
+extension GovermentDetailsView: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        notifyError(error: error.localizedDescription)
     }
 }
