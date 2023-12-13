@@ -13,10 +13,9 @@ class GovermentSplashPresenter {
     weak var view: GovermentSplashViewProtocol?
 }
 
-
-
 extension GovermentSplashPresenter: GovermentSplashPresenterProtocol {
     func requestInfo() {
+        view?.showLoading()
         interactor?.fetchData()
     }
     

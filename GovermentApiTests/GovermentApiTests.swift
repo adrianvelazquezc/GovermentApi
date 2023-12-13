@@ -39,4 +39,12 @@ final class GovermentApiTests: XCTestCase {
     func testShouldRemoveLoading() {
         XCTAssertNotNil(sut.dissmissLoading())
     }
+    
+    func testShouldAccept() {
+        XCTAssertNotNil(sut.notifyAccept())
+    }
+    
+    func testShouldCancel() {
+        XCTAssertNotNil(sut.notifyCancel())
+    }
 }

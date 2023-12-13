@@ -19,10 +19,9 @@ class GovermentSplashView: UIViewController {
                 if isConnected {
                     self.presenter?.requestInfo()
                 } else {
-                    self.notifyError(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
+                    self.presenter?.responseErrorInfo(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
                 }
             }
-            Goverment_ActivityIndicator.remove(parent: self.view)
         }
     }
 }
