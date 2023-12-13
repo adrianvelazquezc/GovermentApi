@@ -10,6 +10,7 @@ import UIKit
 protocol GovermentHomeViewUIDelegate {
     func notifyGetFilterString(filter: String)
     func addNewValues()
+    func notifyShowInfo(element: Result)
 }
 
 class GovermentHomeViewUI: UIView {
@@ -18,6 +19,7 @@ class GovermentHomeViewUI: UIView {
     internal var originalElementList: [Result] = []
     lazy var elementList: [Result] = originalElementList
     var isSendingRequest = false
+    public var currentSearch: CurrentSearch = .id
     
     lazy var searchBar: Goverment_TextField = {
         let textField = Goverment_TextField(placeholder: "Insert id to track")
@@ -102,7 +104,7 @@ extension GovermentHomeViewUI: UITableViewDelegate,  UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GovermentTableViewCell", for: indexPath) as! GovermentTableViewCell
         cell.idLabel.text = elementList[indexPath.row].id
-//        cell.slugLabel.text = elementList[indexPath.row].slug.uppercased()
+        cell.organizationLabel.text = elementList[indexPath.row].organization
         cell.urlLabel.text = "\(elementList[indexPath.row].url)"
         return cell
     }
@@ -116,5 +118,8 @@ extension GovermentHomeViewUI: UITableViewDelegate,  UITableViewDataSource {
             isSendingRequest = true
             delegate?.addNewValues()
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.notifyShowInfo(element: elementList[indexPath.row])
     }
 }

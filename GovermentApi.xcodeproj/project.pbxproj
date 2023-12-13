@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		CEB2FA132B294417008E183E /* Goverment_Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA122B294417008E183E /* Goverment_Alert.swift */; };
 		CEB2FA152B294EE3008E183E /* Goverment_NetworkAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA142B294EE3008E183E /* Goverment_NetworkAvailable.swift */; };
+		CEB2FA1F2B2954F7008E183E /* GovermentDetailsViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA172B2954F7008E183E /* GovermentDetailsViewUI.swift */; };
+		CEB2FA202B2954F7008E183E /* GovermentDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA182B2954F7008E183E /* GovermentDetailsPresenter.swift */; };
+		CEB2FA212B2954F7008E183E /* GovermentDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA192B2954F7008E183E /* GovermentDetailsRouter.swift */; };
+		CEB2FA222B2954F7008E183E /* GovermentDetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA1A2B2954F7008E183E /* GovermentDetailsProtocols.swift */; };
+		CEB2FA232B2954F7008E183E /* GovermentDetailsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA1B2B2954F7008E183E /* GovermentDetailsMain.swift */; };
+		CEB2FA242B2954F7008E183E /* GovermentDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA1C2B2954F7008E183E /* GovermentDetailsInteractor.swift */; };
+		CEB2FA252B2954F7008E183E /* GovermentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA1D2B2954F7008E183E /* GovermentDetailsView.swift */; };
+		CEB2FA262B2954F7008E183E /* GovermentDetailsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA1E2B2954F7008E183E /* GovermentDetailsEntity.swift */; };
 		CEC4F9D52B28F4CD00C80226 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4F9D42B28F4CD00C80226 /* AppDelegate.swift */; };
 		CEC4F9DE2B28F4CE00C80226 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC4F9DD2B28F4CE00C80226 /* Assets.xcassets */; };
 		CEC4F9E12B28F4CE00C80226 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC4F9DF2B28F4CE00C80226 /* LaunchScreen.storyboard */; };
@@ -43,6 +51,14 @@
 /* Begin PBXFileReference section */
 		CEB2FA122B294417008E183E /* Goverment_Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_Alert.swift; sourceTree = "<group>"; };
 		CEB2FA142B294EE3008E183E /* Goverment_NetworkAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_NetworkAvailable.swift; sourceTree = "<group>"; };
+		CEB2FA172B2954F7008E183E /* GovermentDetailsViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsViewUI.swift; sourceTree = "<group>"; };
+		CEB2FA182B2954F7008E183E /* GovermentDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsPresenter.swift; sourceTree = "<group>"; };
+		CEB2FA192B2954F7008E183E /* GovermentDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsRouter.swift; sourceTree = "<group>"; };
+		CEB2FA1A2B2954F7008E183E /* GovermentDetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsProtocols.swift; sourceTree = "<group>"; };
+		CEB2FA1B2B2954F7008E183E /* GovermentDetailsMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsMain.swift; sourceTree = "<group>"; };
+		CEB2FA1C2B2954F7008E183E /* GovermentDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsInteractor.swift; sourceTree = "<group>"; };
+		CEB2FA1D2B2954F7008E183E /* GovermentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsView.swift; sourceTree = "<group>"; };
+		CEB2FA1E2B2954F7008E183E /* GovermentDetailsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsEntity.swift; sourceTree = "<group>"; };
 		CEC4F9D12B28F4CD00C80226 /* GovermentApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovermentApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4F9D42B28F4CD00C80226 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC4F9DD2B28F4CE00C80226 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +103,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CEB2FA162B2954E6008E183E /* GovermentDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CEB2FA172B2954F7008E183E /* GovermentDetailsViewUI.swift */,
+				CEB2FA182B2954F7008E183E /* GovermentDetailsPresenter.swift */,
+				CEB2FA192B2954F7008E183E /* GovermentDetailsRouter.swift */,
+				CEB2FA1A2B2954F7008E183E /* GovermentDetailsProtocols.swift */,
+				CEB2FA1B2B2954F7008E183E /* GovermentDetailsMain.swift */,
+				CEB2FA1C2B2954F7008E183E /* GovermentDetailsInteractor.swift */,
+				CEB2FA1D2B2954F7008E183E /* GovermentDetailsView.swift */,
+				CEB2FA1E2B2954F7008E183E /* GovermentDetailsEntity.swift */,
+			);
+			path = GovermentDetails;
+			sourceTree = "<group>";
+		};
 		CEC4F9C82B28F4CD00C80226 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +140,7 @@
 				CEC4FA112B2921D200C80226 /* GovermentSplash */,
 				CEC4F9E82B28F52500C80226 /* GovermentLogin */,
 				CEC4F9F92B28FAB900C80226 /* GovermentHome */,
+				CEB2FA162B2954E6008E183E /* GovermentDetails */,
 				CEC4FA0A2B2913BD00C80226 /* Components */,
 				CEC4F9D42B28F4CD00C80226 /* AppDelegate.swift */,
 				CEC4F9DD2B28F4CE00C80226 /* Assets.xcassets */,
@@ -245,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC4F9F52B28F53E00C80226 /* GovermentLoginMain.swift in Sources */,
+				CEB2FA232B2954F7008E183E /* GovermentDetailsMain.swift in Sources */,
 				CEC4F9F22B28F53E00C80226 /* GovermentLoginPresenter.swift in Sources */,
 				CEC4FA232B292A9700C80226 /* GovermentTableViewCell.swift in Sources */,
 				CEC4FA032B28FAD200C80226 /* GovermentHomePresenter.swift in Sources */,
@@ -263,14 +296,21 @@
 				CEC4FA1F2B2921EC00C80226 /* GovermentSplashInteractor.swift in Sources */,
 				CEC4FA1C2B2921EC00C80226 /* GovermentSplashRouter.swift in Sources */,
 				CEC4F9F42B28F53E00C80226 /* GovermentLoginProtocols.swift in Sources */,
+				CEB2FA1F2B2954F7008E183E /* GovermentDetailsViewUI.swift in Sources */,
+				CEB2FA252B2954F7008E183E /* GovermentDetailsView.swift in Sources */,
 				CEC4FA1D2B2921EC00C80226 /* GovermentSplashProtocols.swift in Sources */,
+				CEB2FA262B2954F7008E183E /* GovermentDetailsEntity.swift in Sources */,
+				CEB2FA212B2954F7008E183E /* GovermentDetailsRouter.swift in Sources */,
 				CEC4FA1B2B2921EC00C80226 /* GovermentSplashPresenter.swift in Sources */,
 				CEC4FA212B2921EC00C80226 /* GovermentSplashEntity.swift in Sources */,
 				CEC4F9F62B28F53E00C80226 /* GovermentLoginInteractor.swift in Sources */,
+				CEB2FA242B2954F7008E183E /* GovermentDetailsInteractor.swift in Sources */,
 				CEC4F9F82B28F53E00C80226 /* GovermentLoginEntity.swift in Sources */,
+				CEB2FA202B2954F7008E183E /* GovermentDetailsPresenter.swift in Sources */,
 				CEC4FA022B28FAD200C80226 /* GovermentHomeViewUI.swift in Sources */,
 				CEC4FA082B28FAD200C80226 /* GovermentHomeView.swift in Sources */,
 				CEC4F9F72B28F53E00C80226 /* GovermentLoginView.swift in Sources */,
+				CEB2FA222B2954F7008E183E /* GovermentDetailsProtocols.swift in Sources */,
 				CEB2FA152B294EE3008E183E /* Goverment_NetworkAvailable.swift in Sources */,
 				CEC4F9D52B28F4CD00C80226 /* AppDelegate.swift in Sources */,
 			);

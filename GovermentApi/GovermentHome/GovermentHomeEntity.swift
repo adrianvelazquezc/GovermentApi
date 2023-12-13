@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+public enum CurrentSearch: String {
+    case id
+    case organization
+    case urlLabel
+}

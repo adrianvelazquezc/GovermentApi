@@ -16,7 +16,7 @@ class GovermentHomePresenter {
 
 
 extension GovermentHomePresenter: GovermentHomePresenterProtocol {
-    func requestNextValuesList() {
-        
+    func requestElementDetails(element: Result) {
+        router?.navigateToElementDetails(element: element)
     }
 }

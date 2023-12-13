@@ -18,9 +18,9 @@ protocol GovermentHomeInteractorProtocol: AnyObject {
 }
 
 protocol GovermentHomePresenterProtocol: AnyObject {
-    
+    func requestElementDetails(element: Result)
 }
 
 protocol GovermentHomeRouterProtocol: AnyObject {
-    
+    func navigateToElementDetails(element: Result)
 }

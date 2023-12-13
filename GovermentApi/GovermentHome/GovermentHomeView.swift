@@ -72,8 +72,21 @@ extension GovermentHomeView: GovermentHomeViewUIDelegate {
         if filter.isEmpty {
             ui?.elementList = ui?.originalElementList ?? [Result]()
         } else {
-            ui?.elementList = ui?.originalElementList.filter({ $0.id.localizedCaseInsensitiveContains(filter) }) ?? []
+            if let ui = ui {
+                switch ui.currentSearch {
+                case .id:
+                    ui.elementList = ui.originalElementList.filter { $0.id.localizedCaseInsensitiveContains(filter) }
+                case .organization:
+                    ui.elementList = ui.originalElementList.filter { $0.organization.localizedCaseInsensitiveContains(filter) }
+                case .urlLabel:
+                    ui.elementList = ui.originalElementList.filter { $0.url.localizedCaseInsensitiveContains(filter) }
+                }
+            } 
         }
         ui?.tableView.reloadData()
+    }
+    
+    func notifyShowInfo(element: Result) {
+        presenter?.requestElementDetails(element: element)
     }
 }

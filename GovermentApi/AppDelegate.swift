@@ -22,6 +22,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.pushViewController(vc, animated: true)
         return true
     }
-    
 }
-

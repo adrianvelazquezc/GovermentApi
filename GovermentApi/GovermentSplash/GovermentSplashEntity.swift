@@ -13,7 +13,7 @@ struct Pagination: Codable {
     let total: Int
 }
 
-struct Result: Codable {
+public struct Result: Codable {
     let id: String
     let dateInsert: String
     let slug: String

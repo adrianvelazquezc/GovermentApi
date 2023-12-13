@@ -28,7 +28,7 @@ class GovermentTableViewCell: UITableViewCell {
         return label
     }()
     
-    public var slugLabelTitle: UILabel = {
+    public var organizationTitle: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ class GovermentTableViewCell: UITableViewCell {
         return label
     }()
     
-    public var slugLabel: UILabel = {
+    public var organizationLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -82,8 +82,8 @@ class GovermentTableViewCell: UITableViewCell {
         backgroundColor = .white
         addSubview(idLabelTitle)
         addSubview(idLabel)
-        addSubview(slugLabelTitle)
-        addSubview(slugLabel)
+        addSubview(organizationTitle)
+        addSubview(organizationLabel)
         addSubview(urlLabelTitle)
         addSubview(urlLabel)
     }
@@ -97,15 +97,15 @@ class GovermentTableViewCell: UITableViewCell {
             idLabel.leadingAnchor.constraint(equalTo: idLabelTitle.trailingAnchor, constant: 5),
             idLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             
-            slugLabelTitle.topAnchor.constraint(equalTo: idLabelTitle.bottomAnchor, constant: 5),
-            slugLabelTitle.leadingAnchor.constraint(equalTo: idLabelTitle.leadingAnchor),
-            slugLabelTitle.widthAnchor.constraint(equalToConstant: 40),
-            slugLabel.topAnchor.constraint(equalTo: slugLabelTitle.topAnchor),
-            slugLabel.leadingAnchor.constraint(equalTo: slugLabelTitle.trailingAnchor, constant: 5),
-            slugLabel.trailingAnchor.constraint(equalTo: idLabel.trailingAnchor),
+            organizationTitle.topAnchor.constraint(equalTo: idLabelTitle.bottomAnchor, constant: 5),
+            organizationTitle.leadingAnchor.constraint(equalTo: idLabelTitle.leadingAnchor),
+            organizationTitle.widthAnchor.constraint(equalToConstant: 40),
+            organizationLabel.topAnchor.constraint(equalTo: organizationTitle.topAnchor),
+            organizationLabel.leadingAnchor.constraint(equalTo: organizationTitle.trailingAnchor, constant: 5),
+            organizationLabel.trailingAnchor.constraint(equalTo: idLabel.trailingAnchor),
             
-            urlLabelTitle.topAnchor.constraint(equalTo: slugLabelTitle.bottomAnchor, constant: 5),
-            urlLabelTitle.leadingAnchor.constraint(equalTo: slugLabelTitle.leadingAnchor),
+            urlLabelTitle.topAnchor.constraint(equalTo: organizationTitle.bottomAnchor, constant: 5),
+            urlLabelTitle.leadingAnchor.constraint(equalTo: organizationTitle.leadingAnchor),
             urlLabelTitle.widthAnchor.constraint(equalToConstant: 40),
             urlLabel.topAnchor.constraint(equalTo: urlLabelTitle.topAnchor),
             urlLabel.leadingAnchor.constraint(equalTo: urlLabelTitle.trailingAnchor, constant: 5),

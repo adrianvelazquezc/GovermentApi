@@ -44,30 +44,36 @@ extension GovermentLoginView: GovermentLoginViewProtocol {
 extension GovermentLoginView: GovermentLoginViewUIDelegate {
     func notifyRegisterUser(userInfo: UserInfo) {
         Goverment_NetworkAvailable.checkInternet { isConnected in
-            if isConnected {
-                self.presenter?.requestNewUserLogin(userInfo: userInfo)
-            } else {
-                self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+            DispatchQueue.main.async {
+                if isConnected {
+                    self.presenter?.requestNewUserLogin(userInfo: userInfo)
+                } else {
+                    self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+                }
             }
         }
     }
     
     func notifyCheckUserLogin(userInfo: UserInfo) {
         Goverment_NetworkAvailable.checkInternet { isConnected in
-            if isConnected {
-                self.presenter?.requestUserLogin(userInfo: userInfo)
-            } else {
-                self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+            DispatchQueue.main.async {
+                if isConnected {
+                    self.presenter?.requestUserLogin(userInfo: userInfo)
+                } else {
+                    self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+                }
             }
         }
     }
     
     func notifyCheckGoogleLogin() {
         Goverment_NetworkAvailable.checkInternet { isConnected in
-            if isConnected {
-                self.presenter?.requestCheckGoogleLogin()
-            } else {
-                self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+            DispatchQueue.main.async {
+                if isConnected {
+                    self.presenter?.requestCheckGoogleLogin()
+                } else {
+                    self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
+                }
             }
         }
     }
