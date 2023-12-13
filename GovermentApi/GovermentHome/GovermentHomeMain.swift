@@ -16,6 +16,7 @@ open class GovermentHomeMain {
             let interactor = GovermentHomeInteractor()
             
             view.presenter = presenter
+            view.dataInfo = responseData
             
             presenter.view = view
             presenter.interactor = interactor

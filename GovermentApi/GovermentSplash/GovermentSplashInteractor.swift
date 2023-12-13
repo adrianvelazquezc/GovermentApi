@@ -13,7 +13,7 @@ class GovermentSplashInteractor {
 
 extension GovermentSplashInteractor: GovermentSplashInteractorProtocol {
     func fetchData() {
-        let urlString = "https://api.datos.gob.mx/v1/gobmx.facts?page=1&pageSize=10"
+        let urlString = "https://api.datos.gob.mx/v1/gobmx.facts?page=1&pageSize=1000"
         if let urlObject = URL(string: urlString){
             var urlRequest = URLRequest(url: urlObject)
             urlRequest.httpMethod = "GET"
