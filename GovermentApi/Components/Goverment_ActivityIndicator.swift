@@ -13,7 +13,8 @@ open class Goverment_ActivityIndicator {
     
     private static var gobIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.tintColor = .gray
+        indicator.tintColor = .orange
+        indicator.transform = CGAffineTransform(scaleX: 3, y: 3)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
     }()
@@ -33,12 +34,12 @@ open class Goverment_ActivityIndicator {
         parent.addSubview(mainView)
         gobIndicator.startAnimating()
         
-            NSLayoutConstraint.activate([
-                gobIndicator.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
-                gobIndicator.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
-                gobIndicator.heightAnchor.constraint(equalToConstant: 50),
-                gobIndicator.widthAnchor.constraint(equalToConstant: 50),
-            ])
+        NSLayoutConstraint.activate([
+            gobIndicator.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+            gobIndicator.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
+            gobIndicator.heightAnchor.constraint(equalToConstant: 100),
+            gobIndicator.widthAnchor.constraint(equalToConstant: 100),
+        ])
     }
     
     public static func remove(parent: UIView) {

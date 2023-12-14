@@ -45,6 +45,9 @@ class Goverment_TextField: UITextField {
             attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: attributes)
         }
     }
+    public func updatePlaceholderTextWith(_ newText: String) {
+        placeholder = newText
+    }
 }
 
 extension Goverment_TextField: UITextFieldDelegate {

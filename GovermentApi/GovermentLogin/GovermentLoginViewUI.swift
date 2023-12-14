@@ -61,7 +61,7 @@ class GovermentLoginViewUI: UIView {
             self.navigationController = navigation
             
             let gestoTap = UITapGestureRecognizer(target: self, action: #selector(dissmisKeyboard(_:)))
-            self.addGestureRecognizer(gestoTap)
+            addGestureRecognizer(gestoTap)
             
             setUI()
             setConstraints()

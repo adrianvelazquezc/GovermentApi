@@ -27,6 +27,13 @@ class GovermentHomeViewUI: UIView {
         return textField
     }()
     
+    private lazy var dropdownButton: Goverment_DropdownView = {
+        let button = Goverment_DropdownView(incomingElementName: ["id", "organization", "urlLabel"], parent: self)
+        button.delegate = self
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     public lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(GovermentTableViewCell.self, forCellReuseIdentifier: GovermentTableViewCell.identifier)
@@ -57,8 +64,9 @@ class GovermentHomeViewUI: UIView {
     
     func setUI() {
         backgroundColor = .white
-        self.addSubview(searchBar)
-        self.addSubview(tableView)
+        addSubview(searchBar)
+        addSubview(tableView)
+        addSubview(dropdownButton)
     }
     
     func setConstraints() {
@@ -68,11 +76,17 @@ class GovermentHomeViewUI: UIView {
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             searchBar.heightAnchor.constraint(equalToConstant: 40),
             
+            dropdownButton.topAnchor.constraint(equalTo: searchBar.topAnchor),
+            dropdownButton.bottomAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            dropdownButton.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor),
+            dropdownButton.widthAnchor.constraint(equalToConstant: 100),
+            
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+        dropdownButton.setUi(reference: dropdownButton)
     }
     
     @objc func dissmisKeyboard(_ sender: UITapGestureRecognizer){
@@ -122,5 +136,11 @@ extension GovermentHomeViewUI: UITableViewDelegate,  UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         delegate?.notifyShowInfo(element: elementList[indexPath.row])
+    }
+}
+extension GovermentHomeViewUI: Goverment_DropdownViewProtocol {
+    func didChoiceFilter(_ elementToFilter: String) {
+        searchBar.updatePlaceholderTextWith("Insert \(elementToFilter) to track")
+        currentSearch = CurrentSearch(rawValue: elementToFilter) ?? .id
     }
 }
