@@ -6,23 +6,40 @@
 //
 
 import UIKit
+import Lottie
 
 class GovermentSplashView: UIViewController {
     var presenter: GovermentSplashPresenterProtocol?
     
+    public lazy var animationView: AnimationView = {
+       let animation = AnimationView(name: "Goverment_Lottie_Loading")
+        animation.translatesAutoresizingMaskIntoConstraints = false
+        animation.loopMode = .playOnce
+        return animation
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        Goverment_ActivityIndicator.show(parent: self.view)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-            Goverment_NetworkAvailable.checkInternet { (isConnected) in
-                if isConnected {
-                    self.presenter?.requestInfo()
-                } else {
-                    self.presenter?.responseErrorInfo(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
+        view.addSubview(animationView)
+        setConstraints()
+        animationView.play { finished in
+                Goverment_NetworkAvailable.checkInternet { (isConnected) in
+                    if isConnected {
+                        self.presenter?.requestInfo()
+                    } else {
+                        self.presenter?.responseErrorInfo(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
+                    }
                 }
-            }
         }
+    }
+    func setConstraints() {
+        NSLayoutConstraint.activate([
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: 200),
+            animationView.heightAnchor.constraint(equalToConstant: 200)
+        ])
     }
 }
 
