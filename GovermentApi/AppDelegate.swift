@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import FirebaseCore
 import FirebaseFirestore
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,5 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = GovermentSplashMain.createModule(navigation: nav)
         nav.pushViewController(vc, animated: true)
         return true
+    }
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+      return GIDSignIn.sharedInstance.handle(url)
     }
 }

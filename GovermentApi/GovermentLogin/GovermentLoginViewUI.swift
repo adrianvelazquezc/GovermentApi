@@ -18,6 +18,17 @@ class GovermentLoginViewUI: UIView {
     var delegate: GovermentLoginViewUIDelegate?
     var navigationController: UINavigationController?
     
+    
+    let welcomeLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Welcome"
+        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +67,29 @@ class GovermentLoginViewUI: UIView {
         return button
     }()
     
+    lazy var googleButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Sign in with Google", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 8.0
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        let googleLogo = UIImageView(image: UIImage(named: "googleIcon"))
+        googleLogo.contentMode = .scaleAspectFit
+        button.addSubview(googleLogo)
+        googleLogo.translatesAutoresizingMaskIntoConstraints = false
+        googleLogo.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 16).isActive = true
+        googleLogo.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
+        googleLogo.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        googleLogo.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(googleTapped(_:)), for: .touchUpInside)
+        return button
+    }()
+    
     public convenience init(navigation: UINavigationController, delegate: GovermentLoginViewUIDelegate?) {
             self.init()
             self.delegate = delegate
@@ -78,15 +112,21 @@ class GovermentLoginViewUI: UIView {
     
     func setUI(){
         backgroundColor = .white
+        addSubview(welcomeLabel)
         addSubview(containerView)
         containerView.addSubview(userlMalTextField)
         containerView.addSubview(userPasswordTextField)
         containerView.addSubview(continueButton)
         containerView.addSubview(registerButton)
+        containerView.addSubview(googleButton)
     }
     
     func setConstraints(){
         NSLayoutConstraint.activate([
+            welcomeLabel.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: -20),
+            welcomeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            welcomeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
             containerView.centerYAnchor.constraint(equalTo: centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -106,12 +146,17 @@ class GovermentLoginViewUI: UIView {
             continueButton.leadingAnchor.constraint(equalTo: userlMalTextField.leadingAnchor),
             continueButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -20),
             continueButton.heightAnchor.constraint(equalToConstant: 50),
-            continueButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
             
             registerButton.topAnchor.constraint(equalTo: continueButton.topAnchor),
             registerButton.heightAnchor.constraint(equalTo: continueButton.heightAnchor),
             registerButton.widthAnchor.constraint(equalTo: continueButton.widthAnchor),
             registerButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 20),
+            
+            googleButton.topAnchor.constraint(equalTo: continueButton.bottomAnchor, constant: 50),
+            googleButton.leadingAnchor.constraint(equalTo: userlMalTextField.leadingAnchor),
+            googleButton.trailingAnchor.constraint(equalTo: userlMalTextField.trailingAnchor),
+            googleButton.heightAnchor.constraint(equalToConstant: 50),
+            googleButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
         ])
     }
     
@@ -123,12 +168,16 @@ class GovermentLoginViewUI: UIView {
         delegate?.notifyCheckUserLogin(userInfo: UserInfo(userMail: userlMalTextField.text ?? "", userPassword: userPasswordTextField.text ?? ""))
     }
     
-    @objc func registerTapped(_ sender: UIControl){
+    @objc func registerTapped(_ sender: UIControl) {
         if let password = userPasswordTextField.text, let email = userlMalTextField.text, email.isEmail() {
             self.delegate?.notifyRegisterUser(userInfo: UserInfo(userMail: email, userPassword: password))
         } else {
             delegate?.notifyShowError(errorMessage: "Please use a valid email example: example@domain.extension")
         }
+    }
+    
+    @objc func googleTapped(_ sender: UIControl) {
+        delegate?.notifyCheckGoogleLogin()
     }
 }
 
@@ -145,3 +194,13 @@ extension GovermentLoginViewUI: UITextFieldDelegate {
         }
     }
 }
+
+//extension GovermentLoginViewUI: GIDSignInDelegate {
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        if let error = error {
+//            delegate?.notifyShowError(errorMessage: "Error during Google Sign-In: \(error.localizedDescription)")
+//        } else {
+//            delegate?.notifyCheckGoogleLogin()
+//        }
+//    }
+//}

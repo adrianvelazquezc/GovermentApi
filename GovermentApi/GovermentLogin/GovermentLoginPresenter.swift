@@ -5,7 +5,7 @@
 //  Created by Mac on 12/12/23.
 //
 
-import Foundation
+import UIKit
 
 class GovermentLoginPresenter {
     var interactor: GovermentLoginInteractorProtocol?
@@ -35,11 +35,13 @@ extension GovermentLoginPresenter: GovermentLoginPresenterProtocol {
         router?.navigateToNextView()
     }
     
-    func requestCheckGoogleLogin() {
+    func requestCheckGoogleLogin(present: UIViewController) {
         view?.showLoading()
+        interactor?.fetchLognInWithGoogle(present: present)
     }
     func responseCheckGoogleLogin() {
         view?.dissmissLoading()
+        router?.navigateToNextView()
     }
     
     func responseErrorInfo(error: String) {

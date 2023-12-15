@@ -70,7 +70,7 @@ extension GovermentLoginView: GovermentLoginViewUIDelegate {
         Goverment_NetworkAvailable.checkInternet { isConnected in
             DispatchQueue.main.async {
                 if isConnected {
-                    self.presenter?.requestCheckGoogleLogin()
+                    self.presenter?.requestCheckGoogleLogin(present: self)
                 } else {
                     self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
                 }

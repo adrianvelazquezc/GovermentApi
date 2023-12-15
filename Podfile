@@ -10,6 +10,7 @@ target 'GovermentApi' do
 	pod 'FirebaseFirestore'
 	pod 'FirebaseCore'
 	pod 'lottie-ios'
+	pod 'GoogleSignIn'
 
   target 'GovermentApiTests' do
     inherit! :search_paths

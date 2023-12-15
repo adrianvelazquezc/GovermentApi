@@ -5,7 +5,7 @@
 //  Created by Mac on 12/12/23.
 //
 
-import Foundation
+import UIKit
 
 protocol GovermentLoginViewProtocol: AnyObject {
     func notifyError(error: String)
@@ -16,6 +16,7 @@ protocol GovermentLoginViewProtocol: AnyObject {
 protocol GovermentLoginInteractorProtocol: AnyObject {
     func authenticateUserLogin(userInfo: UserInfo)
     func postNewUser(userInfo: UserInfo)
+    func fetchLognInWithGoogle(present: UIViewController)
 }
 
 protocol GovermentLoginPresenterProtocol: AnyObject {
@@ -28,7 +29,7 @@ protocol GovermentLoginPresenterProtocol: AnyObject {
     func responseUserLogin()
     
     //access using google button
-    func requestCheckGoogleLogin()
+    func requestCheckGoogleLogin(present: UIViewController)
     func responseCheckGoogleLogin()
     
     func responseErrorInfo(error: String)
