@@ -11,6 +11,7 @@ protocol GovermentLoginViewUIDelegate {
     func notifyCheckUserLogin(userInfo: UserInfo)
     func notifyRegisterUser(userInfo: UserInfo)
     func notifyCheckGoogleLogin()
+    func notifyShowError(errorMessage: String)
 }
 
 class GovermentLoginViewUI: UIView {
@@ -23,8 +24,8 @@ class GovermentLoginViewUI: UIView {
         return view
     }()
     
-    lazy var userNameTextField: Goverment_TextField = {
-        let textField = Goverment_TextField(placeholder: "User")
+    lazy var userlMalTextField: Goverment_TextField = {
+        let textField = Goverment_TextField(placeholder: "Email")
         textField.delegate = self
         return textField
     }()
@@ -78,7 +79,7 @@ class GovermentLoginViewUI: UIView {
     func setUI(){
         backgroundColor = .white
         addSubview(containerView)
-        containerView.addSubview(userNameTextField)
+        containerView.addSubview(userlMalTextField)
         containerView.addSubview(userPasswordTextField)
         containerView.addSubview(continueButton)
         containerView.addSubview(registerButton)
@@ -91,18 +92,18 @@ class GovermentLoginViewUI: UIView {
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
-            userNameTextField.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-            userNameTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            userNameTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-            userNameTextField.heightAnchor.constraint(equalToConstant: 50),
+            userlMalTextField.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            userlMalTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            userlMalTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            userlMalTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            userPasswordTextField.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor, constant: 20),
-            userPasswordTextField.leadingAnchor.constraint(equalTo: userNameTextField.leadingAnchor),
-            userPasswordTextField.trailingAnchor.constraint(equalTo: userNameTextField.trailingAnchor),
+            userPasswordTextField.topAnchor.constraint(equalTo: userlMalTextField.bottomAnchor, constant: 20),
+            userPasswordTextField.leadingAnchor.constraint(equalTo: userlMalTextField.leadingAnchor),
+            userPasswordTextField.trailingAnchor.constraint(equalTo: userlMalTextField.trailingAnchor),
             userPasswordTextField.heightAnchor.constraint(equalToConstant: 50),
             
             continueButton.topAnchor.constraint(equalTo: userPasswordTextField.bottomAnchor, constant: 50),
-            continueButton.leadingAnchor.constraint(equalTo: userNameTextField.leadingAnchor),
+            continueButton.leadingAnchor.constraint(equalTo: userlMalTextField.leadingAnchor),
             continueButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -20),
             continueButton.heightAnchor.constraint(equalToConstant: 50),
             continueButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
@@ -119,17 +120,21 @@ class GovermentLoginViewUI: UIView {
     }
     
     @objc func buttonTapped(_ sender: UITapGestureRecognizer) {
-        delegate?.notifyCheckUserLogin(userInfo: UserInfo(userName: userNameTextField.text ?? "", userPassword: userPasswordTextField.text ?? ""))
+        delegate?.notifyCheckUserLogin(userInfo: UserInfo(userMail: userlMalTextField.text ?? "", userPassword: userPasswordTextField.text ?? ""))
     }
     
     @objc func registerTapped(_ sender: UIControl){
-        self.delegate?.notifyRegisterUser(userInfo: UserInfo(userName: userNameTextField.text ?? "", userPassword: userPasswordTextField.text ?? ""))
+        if let password = userPasswordTextField.text, let email = userlMalTextField.text, email.isEmail() {
+            self.delegate?.notifyRegisterUser(userInfo: UserInfo(userMail: email, userPassword: password))
+        } else {
+            delegate?.notifyShowError(errorMessage: "Please use a valid email example: example@domain.extension")
+        }
     }
 }
 
 extension GovermentLoginViewUI: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        continueButton.isEnabled = (!(userNameTextField.text?.isEmpty ?? false) && !(userPasswordTextField.text?.isEmpty ?? false))
+        continueButton.isEnabled = (!(userlMalTextField.text?.isEmpty ?? false) && !(userPasswordTextField.text?.isEmpty ?? false))
         registerButton.isEnabled = continueButton.isEnabled
         if continueButton.isEnabled {
             continueButton.backgroundColor =   #colorLiteral(red: 0.4548825622, green: 0.8329617977, blue: 0.4634124041, alpha: 1)

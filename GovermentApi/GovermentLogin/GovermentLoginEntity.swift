@@ -9,6 +9,6 @@ import Foundation
 
 
 struct UserInfo {
-    let userName: String
+    let userMail: String
     let userPassword: String
 }

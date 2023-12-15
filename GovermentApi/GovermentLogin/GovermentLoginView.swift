@@ -77,6 +77,10 @@ extension GovermentLoginView: GovermentLoginViewUIDelegate {
             }
         }
     }
+    
+    func notifyShowError(errorMessage: String) {
+        notifyError(error: errorMessage)
+    }
 }
 
 extension GovermentLoginView: Goverment_AlertProtocol {

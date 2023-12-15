@@ -14,7 +14,7 @@ class GovermentLoginInteractor {
 
 extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
     func postNewUser(userInfo: UserInfo) {
-        Auth.auth().createUser(withEmail: userInfo.userName, password: userInfo.userPassword) {
+        Auth.auth().createUser(withEmail: userInfo.userMail, password: userInfo.userPassword) {
             (result, error) in
             DispatchQueue.main.async {
                 if let _ = result, error == nil {
@@ -27,7 +27,7 @@ extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
     }
     
     func authenticateUserLogin(userInfo: UserInfo) {
-        Auth.auth().signIn(withEmail: userInfo.userName, password: userInfo.userPassword) {
+        Auth.auth().signIn(withEmail: userInfo.userMail, password: userInfo.userPassword) {
             (result, error) in
             DispatchQueue.main.async {
                 if let _ = result, error == nil {

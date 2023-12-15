@@ -48,11 +48,11 @@ final class GovermentLoginViewTest: XCTestCase {
     }
     
     func testShouldRegisterUser() {
-        sut.notifyRegisterUser(userInfo: UserInfo(userName: "a", userPassword: "b"))
+        sut.notifyRegisterUser(userInfo: UserInfo(userMail: "a", userPassword: "b"))
     }
     
     func testShouldLogInUser() {
-        sut.notifyCheckUserLogin(userInfo: UserInfo(userName: "a", userPassword: "b"))
+        sut.notifyCheckUserLogin(userInfo: UserInfo(userMail: "a", userPassword: "b"))
     }
     
     func testShouldLogInUserWithGoogle() {
