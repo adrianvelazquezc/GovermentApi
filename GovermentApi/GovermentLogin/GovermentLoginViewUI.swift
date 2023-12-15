@@ -55,7 +55,7 @@ class GovermentLoginViewUI: UIView {
         return button
     }()
     
-    public convenience init(navigation: UINavigationController,delegate: GovermentLoginViewUIDelegate) {
+    public convenience init(navigation: UINavigationController, delegate: GovermentLoginViewUIDelegate?) {
             self.init()
             self.delegate = delegate
             self.navigationController = navigation
@@ -130,7 +130,7 @@ class GovermentLoginViewUI: UIView {
 extension GovermentLoginViewUI: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         continueButton.isEnabled = (!(userNameTextField.text?.isEmpty ?? false) && !(userPasswordTextField.text?.isEmpty ?? false))
-        registerButton.isEnabled = (!(userNameTextField.text?.isEmpty ?? false) && !(userPasswordTextField.text?.isEmpty ?? false))
+        registerButton.isEnabled = continueButton.isEnabled
         if continueButton.isEnabled {
             continueButton.backgroundColor =   #colorLiteral(red: 0.4548825622, green: 0.8329617977, blue: 0.4634124041, alpha: 1)
             registerButton.backgroundColor =   #colorLiteral(red: 0.4548825622, green: 0.8329617977, blue: 0.4634124041, alpha: 1)

@@ -13,7 +13,7 @@ open class Goverment_ActivityIndicator {
     
     private static var gobIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.tintColor = .orange
+        indicator.tintColor = .gray
         indicator.transform = CGAffineTransform(scaleX: 3, y: 3)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
@@ -50,4 +50,8 @@ open class Goverment_ActivityIndicator {
         }
         gobIndicator.stopAnimating()
     }
+    
+    public static func isLoading() -> Bool {
+        return gobIndicator.isAnimating
+        }
 }

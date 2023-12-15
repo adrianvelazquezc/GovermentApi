@@ -24,6 +24,7 @@ class GovermentDetailsView: UIViewController {
             view = ui
         }
     }
+    
     override func viewDidLoad() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()

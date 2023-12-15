@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CEAE1DDE2B2976FA00B20188 /* GovermentApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE1DDD2B2976FA00B20188 /* GovermentApiTests.swift */; };
+		CEAE1DDE2B2976FA00B20188 /* GovermentSplashTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE1DDD2B2976FA00B20188 /* GovermentSplashTest.swift */; };
 		CEB2FA132B294417008E183E /* Goverment_Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA122B294417008E183E /* Goverment_Alert.swift */; };
 		CEB2FA152B294EE3008E183E /* Goverment_NetworkAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA142B294EE3008E183E /* Goverment_NetworkAvailable.swift */; };
 		CEB2FA1F2B2954F7008E183E /* GovermentDetailsViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA172B2954F7008E183E /* GovermentDetailsViewUI.swift */; };
@@ -48,6 +48,12 @@
 		CEC4FA202B2921EC00C80226 /* GovermentSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4FA182B2921EC00C80226 /* GovermentSplashView.swift */; };
 		CEC4FA212B2921EC00C80226 /* GovermentSplashEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4FA192B2921EC00C80226 /* GovermentSplashEntity.swift */; };
 		CEC4FA232B292A9700C80226 /* GovermentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4FA222B292A9700C80226 /* GovermentTableViewCell.swift */; };
+		CED3F27C2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3F27B2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift */; };
+		CED3F2822B2BA67F00EC2748 /* GovermentLoginUiViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3F2812B2BA67F00EC2748 /* GovermentLoginUiViewTest.swift */; };
+		CED3F2882B2BAE5600EC2748 /* GovermentDetailsViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3F2872B2BAE5600EC2748 /* GovermentDetailsViewTest.swift */; };
+		CED3F28A2B2BAE5E00EC2748 /* GovermentDetailsViewUiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3F2892B2BAE5E00EC2748 /* GovermentDetailsViewUiTest.swift */; };
+		CED962C32B2BB7D800DAF5BE /* GovermentHomeViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962C22B2BB7D800DAF5BE /* GovermentHomeViewTest.swift */; };
+		CED962C52B2BB7E100DAF5BE /* GovermentHomeViewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962C42B2BB7E100DAF5BE /* GovermentHomeViewUITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +68,7 @@
 
 /* Begin PBXFileReference section */
 		CEAE1DDB2B2976FA00B20188 /* GovermentApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GovermentApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEAE1DDD2B2976FA00B20188 /* GovermentApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentApiTests.swift; sourceTree = "<group>"; };
+		CEAE1DDD2B2976FA00B20188 /* GovermentSplashTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentSplashTest.swift; sourceTree = "<group>"; };
 		CEB2FA122B294417008E183E /* Goverment_Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_Alert.swift; sourceTree = "<group>"; };
 		CEB2FA142B294EE3008E183E /* Goverment_NetworkAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_NetworkAvailable.swift; sourceTree = "<group>"; };
 		CEB2FA172B2954F7008E183E /* GovermentDetailsViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsViewUI.swift; sourceTree = "<group>"; };
@@ -105,6 +111,12 @@
 		CEC4FA182B2921EC00C80226 /* GovermentSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentSplashView.swift; sourceTree = "<group>"; };
 		CEC4FA192B2921EC00C80226 /* GovermentSplashEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentSplashEntity.swift; sourceTree = "<group>"; };
 		CEC4FA222B292A9700C80226 /* GovermentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GovermentTableViewCell.swift; sourceTree = "<group>"; };
+		CED3F27B2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentLoginViewTest.swift; sourceTree = "<group>"; };
+		CED3F2812B2BA67F00EC2748 /* GovermentLoginUiViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentLoginUiViewTest.swift; sourceTree = "<group>"; };
+		CED3F2872B2BAE5600EC2748 /* GovermentDetailsViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsViewTest.swift; sourceTree = "<group>"; };
+		CED3F2892B2BAE5E00EC2748 /* GovermentDetailsViewUiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsViewUiTest.swift; sourceTree = "<group>"; };
+		CED962C22B2BB7D800DAF5BE /* GovermentHomeViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentHomeViewTest.swift; sourceTree = "<group>"; };
+		CED962C42B2BB7E100DAF5BE /* GovermentHomeViewUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentHomeViewUITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +140,10 @@
 		CEAE1DDC2B2976FA00B20188 /* GovermentApiTests */ = {
 			isa = PBXGroup;
 			children = (
-				CEAE1DDD2B2976FA00B20188 /* GovermentApiTests.swift */,
+				CED3F2802B2BA61B00EC2748 /* GovermentSplash */,
+				CED3F27F2B2BA61900EC2748 /* GovermentLogin */,
+				CED3F27D2B2BA60D00EC2748 /* GovermentHome */,
+				CED3F27E2B2BA61300EC2748 /* GovermentDetails */,
 			);
 			path = GovermentApiTests;
 			sourceTree = "<group>";
@@ -239,6 +254,41 @@
 			path = GovermentSplash;
 			sourceTree = "<group>";
 		};
+		CED3F27D2B2BA60D00EC2748 /* GovermentHome */ = {
+			isa = PBXGroup;
+			children = (
+				CED962C22B2BB7D800DAF5BE /* GovermentHomeViewTest.swift */,
+				CED962C42B2BB7E100DAF5BE /* GovermentHomeViewUITest.swift */,
+			);
+			path = GovermentHome;
+			sourceTree = "<group>";
+		};
+		CED3F27E2B2BA61300EC2748 /* GovermentDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CED3F2872B2BAE5600EC2748 /* GovermentDetailsViewTest.swift */,
+				CED3F2892B2BAE5E00EC2748 /* GovermentDetailsViewUiTest.swift */,
+			);
+			path = GovermentDetails;
+			sourceTree = "<group>";
+		};
+		CED3F27F2B2BA61900EC2748 /* GovermentLogin */ = {
+			isa = PBXGroup;
+			children = (
+				CED3F27B2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift */,
+				CED3F2812B2BA67F00EC2748 /* GovermentLoginUiViewTest.swift */,
+			);
+			path = GovermentLogin;
+			sourceTree = "<group>";
+		};
+		CED3F2802B2BA61B00EC2748 /* GovermentSplash */ = {
+			isa = PBXGroup;
+			children = (
+				CEAE1DDD2B2976FA00B20188 /* GovermentSplashTest.swift */,
+			);
+			path = GovermentSplash;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,7 +389,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEAE1DDE2B2976FA00B20188 /* GovermentApiTests.swift in Sources */,
+				CED962C52B2BB7E100DAF5BE /* GovermentHomeViewUITest.swift in Sources */,
+				CEAE1DDE2B2976FA00B20188 /* GovermentSplashTest.swift in Sources */,
+				CED962C32B2BB7D800DAF5BE /* GovermentHomeViewTest.swift in Sources */,
+				CED3F2882B2BAE5600EC2748 /* GovermentDetailsViewTest.swift in Sources */,
+				CED3F28A2B2BAE5E00EC2748 /* GovermentDetailsViewUiTest.swift in Sources */,
+				CED3F27C2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift in Sources */,
+				CED3F2822B2BA67F00EC2748 /* GovermentLoginUiViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +474,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2RHXBRCF87;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gob.GovermentApiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,7 +493,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2RHXBRCF87;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gob.GovermentApiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

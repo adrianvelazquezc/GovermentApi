@@ -137,7 +137,7 @@ class GovermentDetailsViewUI: UIView {
     }()
     
     public convenience init(navigation: UINavigationController,
-                            delegate: GovermentDetailsViewUIDelegate,
+                            delegate: GovermentDetailsViewUIDelegate?,
                             elementDetail: Result){
         self.init()
         self.delegate = delegate

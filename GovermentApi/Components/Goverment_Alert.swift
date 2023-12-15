@@ -13,7 +13,7 @@ import UIKit
 }
 
 open class Goverment_Alert: UIView {
-    private weak var parentView: UIView?
+    public weak var parentView: UIView?
     private weak var delegate : Goverment_AlertProtocol?
     
     private lazy var cardView: UIView = {
@@ -158,11 +158,12 @@ open class Goverment_Alert: UIView {
         ])
     }
     
-    @objc private func continueAction(_ sender: UIButton) {
+    @objc func continueAction(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3) {
             self.alpha = 0
         } completion: { completed in
             self.delegate?.notifyAccept?()
+            self.parentView?.removeFromSuperview()
             self.removeFromSuperview()
         }
     }
@@ -171,6 +172,7 @@ open class Goverment_Alert: UIView {
         UIView.animate(withDuration: 0.3) {
             self.alpha = 0
         } completion: { completed in
+            self.parentView?.removeFromSuperview()
             self.delegate?.notifyCancel?()
             self.removeFromSuperview()
         }
