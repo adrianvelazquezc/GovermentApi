@@ -14,8 +14,6 @@ class GovermentLoginPresenter {
     private var tempResponse: Response?
 }
 
-
-
 extension GovermentLoginPresenter: GovermentLoginPresenterProtocol {
     func requestNewUserLogin(userInfo: UserInfo) {
         view?.showLoading()

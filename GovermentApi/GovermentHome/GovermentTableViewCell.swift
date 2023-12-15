@@ -73,11 +73,6 @@ class GovermentTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    public convenience init(){
-        self.init()
-    }
-    
     fileprivate func setupUIElements() {
         backgroundColor = .white
         addSubview(idLabelTitle)

@@ -29,18 +29,21 @@ final class GovermentLoginUiViewTest: XCTestCase {
         XCTAssertNotNil(sut.buttonTapped(mockGestureRecognizer))
     }
     
-//    func testShouldLogInWithUserError() {
-//        sut.userMailTextField.text = nil
-//        sut.userPasswordTextField.text = nil
-//        XCTAssertNotNil(sut.buttonTapped(mockGestureRecognizer))
-//    }
+    func testShouldCallTextFieldDidChangeSelection() {
+        XCTAssertNotNil(sut.userPasswordTextField.textFieldDidChangeSelection(sut.userlMailTextField))
+    }
+    
+    
+    func testShouldCallUpdatePlaceholderTextWith() {
+        XCTAssertNotNil(sut.userPasswordTextField.updatePlaceholderTextWith("test1"))
+    }
     
     func testShoulRegisterUser() {
         XCTAssertNotNil(sut.registerTapped(UIButton()))
     }
     
     func testShouldChangeInputText() {
-        let mockTextfield = sut.userlMalTextField
+        let mockTextfield = sut.userlMailTextField
         mockTextfield.text = "change"
         XCTAssertNotNil(sut.textFieldDidChangeSelection(mockTextfield))
     }
@@ -48,12 +51,12 @@ final class GovermentLoginUiViewTest: XCTestCase {
     func testShouldNotChangeInputTextWhenButtonDisabled() {
         let mockView = GovermentLoginViewUI()
         mockView.continueButton.isEnabled = false
-        XCTAssertNotNil(sut.textFieldDidChangeSelection(mockView.userlMalTextField))
+        XCTAssertNotNil(sut.textFieldDidChangeSelection(mockView.userlMailTextField))
     }
     
     func testShouldNotChangeInputTextWhenButtonEnabled() {
         let mockView = GovermentLoginViewUI()
         mockView.continueButton.isEnabled = true
-        XCTAssertNotNil(sut.textFieldDidChangeSelection(mockView.userlMalTextField))
+        XCTAssertNotNil(sut.textFieldDidChangeSelection(mockView.userlMailTextField))
     }
 }

@@ -13,6 +13,7 @@ final class GovermentHomeViewTest: XCTestCase {
     
     override func setUpWithError() throws {
         sut = GovermentHomeView()
+        sut.view = UIView()
     }
     
     override func tearDownWithError() throws {
@@ -20,7 +21,7 @@ final class GovermentHomeViewTest: XCTestCase {
     }
     
     func testShoudLoadView() {
-        var mockElementDetail = Result(id: "",
+        let mockElementDetail = Result(id: "",
                                        dateInsert: "",
                                        slug: "",
                                        columns: "",
@@ -32,7 +33,7 @@ final class GovermentHomeViewTest: XCTestCase {
                                        dataset: "",
                                        createdAt: 0)
         sut.dataInfo = Response(pagination: Pagination(pageSize: 1, page: 1, total: 1), results: [mockElementDetail])
-            XCTAssertNotNil(sut.loadView())
+        XCTAssertNotNil(sut.loadView())
     }
     
     func testShouldShowError() {
@@ -47,16 +48,37 @@ final class GovermentHomeViewTest: XCTestCase {
     }
     
     func testShouldShowLoading() {
-        let testView = UIView()
-        Goverment_ActivityIndicator.show(parent: testView)
+        sut.showLoading()
+        Goverment_ActivityIndicator.show(parent: sut.view)
         XCTAssertTrue(Goverment_ActivityIndicator.isLoading())
     }
     
     func testShouldRemoveLoading() {
-        let testView = UIView()
-        Goverment_ActivityIndicator.show(parent: testView)
-        Goverment_ActivityIndicator.remove(parent: testView)
+        sut.dissmissLoading()
+        Goverment_ActivityIndicator.remove(parent: sut.view)
         XCTAssertFalse(Goverment_ActivityIndicator.isLoading(), "Loading indicator should not be animating after dismissal")
+    }
+    
+    func testShoudNotifyGetFilterString() {
+        XCTAssertNotNil(sut.notifyGetFilterString(filter: ""))
+    }
+    
+    func testShoudNotifyShowInfo() {
+        XCTAssertNotNil(sut.notifyShowInfo(element: Result(id: "",
+                                                           dateInsert: "",
+                                                           slug: "",
+                                                           columns: "",
+                                                           fact: "",
+                                                           organization: "",
+                                                           resource: "",
+                                                           url: "",
+                                                           operations: "",
+                                                           dataset: "",
+                                                           createdAt: 0)))
+    }
+    
+    func testShoulCallAddNewValues() {
+        XCTAssertNotNil(sut.addNewValues())
     }
     
 }

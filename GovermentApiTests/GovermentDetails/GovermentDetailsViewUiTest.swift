@@ -36,7 +36,25 @@ final class GovermentDetailsViewUITest: XCTestCase {
     }
     
     func testShareButtonTapped() {
+        mockResult = Result(id: "",
+                            dateInsert: "2016-11-01T19:32:55.363Z",
+                            slug: "",
+                            columns: "",
+                            fact: "",
+                            organization: "",
+                            resource: "",
+                            url: "",
+                            operations: "",
+                            dataset: "",
+                            createdAt: 0)
+        if let mockResult =  mockResult {
+            sut = GovermentDetailsViewUI(navigation: UINavigationController(), delegate: nil, elementDetail: mockResult)
+        }
         XCTAssertNotNil(sut.buttonTapped(mockGestureRecognizer))
+    }
+    
+    func testArrowTapped() {
+        XCTAssertNotNil(sut.arrowTapped(UIButton()))
     }
     
     func testSholdGivesError() {

@@ -10,6 +10,7 @@ import Lottie
 
 class GovermentSplashView: UIViewController {
     var presenter: GovermentSplashPresenterProtocol?
+    var isPresentingError = false
     
     public lazy var animationView: AnimationView = {
         let animation = AnimationView(name: "Goverment_Lottie_Loading")
@@ -45,6 +46,7 @@ class GovermentSplashView: UIViewController {
 
 extension GovermentSplashView: GovermentSplashViewProtocol {
     func notifyError(error: String) {
+        isPresentingError = true
         DispatchQueue.main.async {
             let alert = Goverment_Alert(parentView: self.view, delegate: self, title: "Error", message: error, isCloseEnabled: false, btnAcceptTitle: "Retry")
             alert.show()
@@ -66,10 +68,12 @@ extension GovermentSplashView: GovermentSplashViewProtocol {
 
 extension GovermentSplashView: Goverment_AlertProtocol {
     func notifyAccept() {
+        isPresentingError = false
         presenter?.requestInfo()
     }
     
     func notifyCancel() {
+        isPresentingError = false
         presenter?.requestInfo()
     }
 }

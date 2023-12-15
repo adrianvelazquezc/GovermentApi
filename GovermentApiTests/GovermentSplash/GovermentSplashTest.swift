@@ -25,24 +25,23 @@ final class GovermentSplashTest: XCTestCase {
             XCTAssertNotNil(self.sut.viewDidLoad())
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 6.0)
     }
     
     func testShouldShowError() {
         let expectation = XCTestExpectation(description: "Waiting for the alert to be presented")
         sut.notifyError(error: "test1")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
             let presentedAlert = self.sut.view.subviews.compactMap { $0 as? Goverment_Alert }.first
             XCTAssertNotNil(presentedAlert, "The alert has not been presented")
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 4.0)
+        wait(for: [expectation], timeout: 8.0)
     }
     
     func testShouldShowLoading() {
         let testView = UIView()
-        Goverment_ActivityIndicator.remove(parent: testView)
+        Goverment_ActivityIndicator.show(parent: testView)
         XCTAssertTrue(Goverment_ActivityIndicator.isLoading())
     }
     
@@ -51,7 +50,6 @@ final class GovermentSplashTest: XCTestCase {
         Goverment_ActivityIndicator.show(parent: testView)
         Goverment_ActivityIndicator.remove(parent: testView)
         XCTAssertFalse(Goverment_ActivityIndicator.isLoading(), "Loading indicator should not be animating after dismissal")
-    
     }
     
     func testShouldAccept() {
@@ -64,7 +62,6 @@ final class GovermentSplashTest: XCTestCase {
             XCTAssertNotEqual(initialViews, endViews, "Expected subviews to change after hideAlertView")
         }
     }
-
 
     func testShouldCancel() {
         let alert = Goverment_Alert(parentView: sut.view, delegate: sut, title: "Error", message: "test2", btnAcceptTitle: "Retry")

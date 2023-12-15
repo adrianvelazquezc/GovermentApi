@@ -13,6 +13,7 @@ final class GovermentLoginViewTest: XCTestCase {
     
     override func setUpWithError() throws {
         sut = GovermentLoginView()
+        sut.view = UIView()
     }
     
     override func tearDownWithError() throws {

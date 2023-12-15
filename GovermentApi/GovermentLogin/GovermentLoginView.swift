@@ -82,13 +82,3 @@ extension GovermentLoginView: GovermentLoginViewUIDelegate {
         notifyError(error: errorMessage)
     }
 }
-
-extension GovermentLoginView: Goverment_AlertProtocol {
-    func notifyAccept() {
-        
-    }
-    
-    func notifyCancel() {
-        
-    }
-}

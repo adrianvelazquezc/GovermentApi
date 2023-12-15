@@ -254,7 +254,7 @@ class GovermentDetailsViewUI: UIView {
             }
     }
     
-    @objc private func arrowTapped(_ sender: UIButton){
+    @objc func arrowTapped(_ sender: UIButton){
         if let navController = self.navigationController {
             navController.popViewController(animated: true)
         }

@@ -44,7 +44,7 @@ class GovermentHomeViewUI: UIView {
         return tableView
     }()
     
-    public convenience init(navigation: UINavigationController, delegate: GovermentHomeViewUIDelegate, responseData: [Result]) {
+    public convenience init(navigation: UINavigationController, delegate: GovermentHomeViewUIDelegate?, responseData: [Result]) {
         self.init()
         self.delegate = delegate
         self.navigationController = navigation

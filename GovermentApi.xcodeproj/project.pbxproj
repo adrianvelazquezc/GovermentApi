@@ -59,6 +59,15 @@
 		CED962C92B2BDF1900DAF5BE /* Goverment_Lottie_Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CED962C82B2BDF1900DAF5BE /* Goverment_Lottie_Loading.json */; };
 		CED962CF2B2BEB3B00DAF5BE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962CE2B2BEB3B00DAF5BE /* String+Extension.swift */; };
 		CED962D12B2BFB6700DAF5BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CED962D02B2BFB6700DAF5BE /* GoogleService-Info.plist */; };
+		CED962D32B2BFF8700DAF5BE /* GovermentLoginPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962D22B2BFF8700DAF5BE /* GovermentLoginPresenterTest.swift */; };
+		CED962D52B2C017500DAF5BE /* GovermentLoginMainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962D42B2C017500DAF5BE /* GovermentLoginMainTest.swift */; };
+		CED962D72B2C02B200DAF5BE /* GovermentLoginInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962D62B2C02B200DAF5BE /* GovermentLoginInteractorTest.swift */; };
+		CED962D92B2C03C900DAF5BE /* GovermentLoginRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962D82B2C03C900DAF5BE /* GovermentLoginRouterTest.swift */; };
+		CED962DB2B2C047200DAF5BE /* GovermentHomeMainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962DA2B2C047200DAF5BE /* GovermentHomeMainTest.swift */; };
+		CED962DD2B2C050600DAF5BE /* GovermentHomePresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962DC2B2C050600DAF5BE /* GovermentHomePresenterTest.swift */; };
+		CED962DF2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962DE2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift */; };
+		CED962E12B2C07D200DAF5BE /* GovermentDetailsMainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962E02B2C07D200DAF5BE /* GovermentDetailsMainTest.swift */; };
+		CED962E52B2C228200DAF5BE /* GovermentTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962E42B2C228200DAF5BE /* GovermentTableViewCellTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +138,15 @@
 		CED962C82B2BDF1900DAF5BE /* Goverment_Lottie_Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Goverment_Lottie_Loading.json; sourceTree = "<group>"; };
 		CED962CE2B2BEB3B00DAF5BE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CED962D02B2BFB6700DAF5BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CED962D22B2BFF8700DAF5BE /* GovermentLoginPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentLoginPresenterTest.swift; sourceTree = "<group>"; };
+		CED962D42B2C017500DAF5BE /* GovermentLoginMainTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentLoginMainTest.swift; sourceTree = "<group>"; };
+		CED962D62B2C02B200DAF5BE /* GovermentLoginInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentLoginInteractorTest.swift; sourceTree = "<group>"; };
+		CED962D82B2C03C900DAF5BE /* GovermentLoginRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentLoginRouterTest.swift; sourceTree = "<group>"; };
+		CED962DA2B2C047200DAF5BE /* GovermentHomeMainTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentHomeMainTest.swift; sourceTree = "<group>"; };
+		CED962DC2B2C050600DAF5BE /* GovermentHomePresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentHomePresenterTest.swift; sourceTree = "<group>"; };
+		CED962DE2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentHomeRouterTest.swift; sourceTree = "<group>"; };
+		CED962E02B2C07D200DAF5BE /* GovermentDetailsMainTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsMainTest.swift; sourceTree = "<group>"; };
+		CED962E42B2C228200DAF5BE /* GovermentTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentTableViewCellTest.swift; sourceTree = "<group>"; };
 		D1393A45724C7575A49EEBFD /* Pods-GovermentApiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GovermentApiTests.debug.xcconfig"; path = "Target Support Files/Pods-GovermentApiTests/Pods-GovermentApiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4FAA025EA885448DCDC9997 /* Pods_GovermentApiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GovermentApiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -300,6 +318,10 @@
 			children = (
 				CED962C22B2BB7D800DAF5BE /* GovermentHomeViewTest.swift */,
 				CED962C42B2BB7E100DAF5BE /* GovermentHomeViewUITest.swift */,
+				CED962DA2B2C047200DAF5BE /* GovermentHomeMainTest.swift */,
+				CED962DC2B2C050600DAF5BE /* GovermentHomePresenterTest.swift */,
+				CED962DE2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift */,
+				CED962E42B2C228200DAF5BE /* GovermentTableViewCellTest.swift */,
 			);
 			path = GovermentHome;
 			sourceTree = "<group>";
@@ -309,6 +331,7 @@
 			children = (
 				CED3F2872B2BAE5600EC2748 /* GovermentDetailsViewTest.swift */,
 				CED3F2892B2BAE5E00EC2748 /* GovermentDetailsViewUiTest.swift */,
+				CED962E02B2C07D200DAF5BE /* GovermentDetailsMainTest.swift */,
 			);
 			path = GovermentDetails;
 			sourceTree = "<group>";
@@ -316,8 +339,12 @@
 		CED3F27F2B2BA61900EC2748 /* GovermentLogin */ = {
 			isa = PBXGroup;
 			children = (
-				CED3F27B2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift */,
+				CED962D42B2C017500DAF5BE /* GovermentLoginMainTest.swift */,
 				CED3F2812B2BA67F00EC2748 /* GovermentLoginUiViewTest.swift */,
+				CED962D22B2BFF8700DAF5BE /* GovermentLoginPresenterTest.swift */,
+				CED3F27B2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift */,
+				CED962D62B2C02B200DAF5BE /* GovermentLoginInteractorTest.swift */,
+				CED962D82B2C03C900DAF5BE /* GovermentLoginRouterTest.swift */,
 			);
 			path = GovermentLogin;
 			sourceTree = "<group>";
@@ -507,12 +534,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED962D72B2C02B200DAF5BE /* GovermentLoginInteractorTest.swift in Sources */,
 				CED962C52B2BB7E100DAF5BE /* GovermentHomeViewUITest.swift in Sources */,
 				CEAE1DDE2B2976FA00B20188 /* GovermentSplashTest.swift in Sources */,
+				CED962DF2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift in Sources */,
 				CED962C32B2BB7D800DAF5BE /* GovermentHomeViewTest.swift in Sources */,
 				CED3F2882B2BAE5600EC2748 /* GovermentDetailsViewTest.swift in Sources */,
+				CED962D32B2BFF8700DAF5BE /* GovermentLoginPresenterTest.swift in Sources */,
+				CED962D52B2C017500DAF5BE /* GovermentLoginMainTest.swift in Sources */,
+				CED962DB2B2C047200DAF5BE /* GovermentHomeMainTest.swift in Sources */,
 				CED3F28A2B2BAE5E00EC2748 /* GovermentDetailsViewUiTest.swift in Sources */,
+				CED962E52B2C228200DAF5BE /* GovermentTableViewCellTest.swift in Sources */,
 				CED3F27C2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift in Sources */,
+				CED962DD2B2C050600DAF5BE /* GovermentHomePresenterTest.swift in Sources */,
+				CED962D92B2C03C900DAF5BE /* GovermentLoginRouterTest.swift in Sources */,
+				CED962E12B2C07D200DAF5BE /* GovermentDetailsMainTest.swift in Sources */,
 				CED3F2822B2BA67F00EC2748 /* GovermentLoginUiViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
