@@ -19,7 +19,7 @@ class GovermentLoginPresenter {
 extension GovermentLoginPresenter: GovermentLoginPresenterProtocol {
     func requestNewUserLogin(userInfo: UserInfo) {
         view?.showLoading()
-        interactor?.authenticateUserLogin(userInfo: userInfo)
+        interactor?.postNewUser(userInfo: userInfo)
     }
     func responseNewUserLogin() {
         view?.dissmissLoading()

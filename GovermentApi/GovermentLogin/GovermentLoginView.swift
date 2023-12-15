@@ -78,3 +78,13 @@ extension GovermentLoginView: GovermentLoginViewUIDelegate {
         }
     }
 }
+
+extension GovermentLoginView: Goverment_AlertProtocol {
+    func notifyAccept() {
+        
+    }
+    
+    func notifyCancel() {
+        
+    }
+}

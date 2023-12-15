@@ -41,6 +41,8 @@ final class GovermentSplashTest: XCTestCase {
     }
     
     func testShouldShowLoading() {
+        let testView = UIView()
+        Goverment_ActivityIndicator.remove(parent: testView)
         XCTAssertTrue(Goverment_ActivityIndicator.isLoading())
     }
     

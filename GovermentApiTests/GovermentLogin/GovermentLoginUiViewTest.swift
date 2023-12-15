@@ -45,9 +45,15 @@ final class GovermentLoginUiViewTest: XCTestCase {
         XCTAssertNotNil(sut.textFieldDidChangeSelection(mockTextfield))
     }
     
-    func testShouldNotChangeInputText() {
+    func testShouldNotChangeInputTextWhenButtonDisabled() {
         let mockView = GovermentLoginViewUI()
         mockView.continueButton.isEnabled = false
+        XCTAssertNotNil(sut.textFieldDidChangeSelection(mockView.userNameTextField))
+    }
+    
+    func testShouldNotChangeInputTextWhenButtonEnabled() {
+        let mockView = GovermentLoginViewUI()
+        mockView.continueButton.isEnabled = true
         XCTAssertNotNil(sut.textFieldDidChangeSelection(mockView.userNameTextField))
     }
 }

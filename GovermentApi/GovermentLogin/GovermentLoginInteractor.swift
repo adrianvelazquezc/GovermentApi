@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class GovermentLoginInteractor {
     var presenter: GovermentLoginPresenterProtocol?
@@ -13,34 +14,28 @@ class GovermentLoginInteractor {
 
 extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
     func postNewUser(userInfo: UserInfo) {
-//        Auth.auth().createUser(withEmail: email, password: password) {
-//            (result, error) in
-//            if let _ = result, error == nil {
-//                self.ui?.animationView.play(completion: { finished in
-//                    self.navigationController?.popViewController(animated: true)
-//                })
-//            } else {
-//                self.ui?.mainView.backgroundColor = .clear
-//                self.ui?.registerButton.isUserInteractionEnabled = true
-//                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//        }
-        
-        presenter?.responseNewUserLogin()
+        Auth.auth().createUser(withEmail: userInfo.userName, password: userInfo.userPassword) {
+            (result, error) in
+            DispatchQueue.main.async {
+                if let _ = result, error == nil {
+                    self.presenter?.responseNewUserLogin()
+                } else {
+                    self.presenter?.responseErrorInfo(error: error?.localizedDescription ?? "Looks like there were an error")
+                }
+            }
+        }
     }
     
     func authenticateUserLogin(userInfo: UserInfo) {
-//        Auth.auth().signIn(withEmail: email, password: password) {
-//            (result, error) in
-//            DispatchQueue.main.async {
-//                if let _ = result, error == nil {
-                    presenter?.responseUserLogin()
-//                } else {
-//                    presenter?.responseErrorInfo(error: error?.localizedDescription)
-//                }
-//            }
-//        }
+        Auth.auth().signIn(withEmail: userInfo.userName, password: userInfo.userPassword) {
+            (result, error) in
+            DispatchQueue.main.async {
+                if let _ = result, error == nil {
+                    self.presenter?.responseNewUserLogin()
+                } else {
+                    self.presenter?.responseErrorInfo(error: error?.localizedDescription ?? "Looks like there were an error")
+                }
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ class GovermentSplashView: UIViewController {
     var presenter: GovermentSplashPresenterProtocol?
     
     public lazy var animationView: AnimationView = {
-       let animation = AnimationView(name: "Goverment_Lottie_Loading")
+        let animation = AnimationView(name: "Goverment_Lottie_Loading")
         animation.translatesAutoresizingMaskIntoConstraints = false
         animation.loopMode = .playOnce
         return animation
@@ -24,13 +24,13 @@ class GovermentSplashView: UIViewController {
         view.addSubview(animationView)
         setConstraints()
         animationView.play { finished in
-                Goverment_NetworkAvailable.checkInternet { (isConnected) in
-                    if isConnected {
-                        self.presenter?.requestInfo()
-                    } else {
-                        self.presenter?.responseErrorInfo(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
-                    }
+            Goverment_NetworkAvailable.checkInternet { (isConnected) in
+                if isConnected {
+                    self.presenter?.requestInfo()
+                } else {
+                    self.presenter?.responseErrorInfo(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
                 }
+            }
         }
     }
     func setConstraints() {
