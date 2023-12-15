@@ -26,7 +26,7 @@ class GovermentDetailsViewUI: UIView {
     
     lazy var leftButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.tintColor = .lightGray
+        button.tintColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         button.setImage(UIImage(named: "leftArrowIcon"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(self.arrowTapped(_:)), for: .touchUpInside)
@@ -54,7 +54,7 @@ class GovermentDetailsViewUI: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         return label
     }()
     
@@ -71,7 +71,7 @@ class GovermentDetailsViewUI: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         return label
     }()
     
@@ -88,7 +88,7 @@ class GovermentDetailsViewUI: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         return label
     }()
     
@@ -105,7 +105,7 @@ class GovermentDetailsViewUI: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         return label
     }()
     
@@ -122,7 +122,7 @@ class GovermentDetailsViewUI: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         return label
     }()
     
@@ -131,7 +131,8 @@ class GovermentDetailsViewUI: UIView {
         button.setTitle("Share", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-        button.backgroundColor =   #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor =   #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
         button.layer.cornerRadius = 25
         return button
     }()
@@ -157,7 +158,7 @@ class GovermentDetailsViewUI: UIView {
     }
     
     func setUI() {
-        backgroundColor = .white
+        backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         addSubview(leftButton)
         addSubview(detailsTitle)
         addSubview(scrollView)

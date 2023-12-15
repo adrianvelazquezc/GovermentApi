@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 import GoogleSignIn
+import LocalAuthentication
 
 class GovermentLoginInteractor {
     var presenter: GovermentLoginPresenterProtocol?
@@ -70,6 +71,62 @@ extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
                     }
                 }
             }
+        }
+    }
+    
+    func authenticateFingerBiometricsLogin() {
+        let context = LAContext()
+        var error: NSError?
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Authenticate to log in"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, authenticationError) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.presenter?.responseLoginWithFingerBiometrics()
+                    } else {
+                        if let error = authenticationError as? LAError {
+                            switch error.code {
+                            case .userCancel, .userFallback, .systemCancel:
+                                self.presenter?.responseErrorInfo(error: error.localizedDescription)
+                            default:
+                                self.presenter?.responseErrorInfo(error: "Looks like there were an error")
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            presenter?.responseErrorInfo(error: "Biometric authentication is not available on this device.")
+        }
+    }
+    
+    func authenticateFaceBiometricsLogin() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Authenticate to access your account"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, authenticationError) in
+                DispatchQueue.main.async {
+                    if success {
+                        self.presenter?.responseLoginWithFingerBiometrics()
+                    } else {
+                        if let error = authenticationError as? LAError {
+                            switch error.code {
+                            case .userCancel, .userFallback, .systemCancel:
+                                self.presenter?.responseErrorInfo(error: error.localizedDescription)
+                            default:
+                                self.presenter?.responseErrorInfo(error: "Looks like there were an error")
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            presenter?.responseErrorInfo(error: "Biometric authentication is not available on this device.")
         }
     }
 }

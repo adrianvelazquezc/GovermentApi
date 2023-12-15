@@ -17,6 +17,11 @@ class GovermentLoginView: UIViewController {
             delegate: self
         )
         view = ui
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 }
 
@@ -76,6 +81,14 @@ extension GovermentLoginView: GovermentLoginViewUIDelegate {
                 }
             }
         }
+    }
+    
+    func notifyLockInWithFingerBiometrics() {
+        presenter?.requestLoginWithFingerBiometrics()
+    }
+    
+    func notifyLockInWithFaceBiometrics() {
+        presenter?.requestLoginWithFaceBiometrics()
     }
     
     func notifyShowError(errorMessage: String) {

@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Lottie
 
 protocol GovermentLoginViewUIDelegate {
     func notifyCheckUserLogin(userInfo: UserInfo)
     func notifyRegisterUser(userInfo: UserInfo)
     func notifyCheckGoogleLogin()
     func notifyShowError(errorMessage: String)
+    func notifyLockInWithFingerBiometrics()
+    func notifyLockInWithFaceBiometrics()
 }
 
 class GovermentLoginViewUI: UIView {
@@ -29,10 +32,12 @@ class GovermentLoginViewUI: UIView {
         return label
     }()
     
-    private var containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private var containerView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     
     lazy var userlMailTextField: Goverment_TextField = {
@@ -40,7 +45,7 @@ class GovermentLoginViewUI: UIView {
         textField.delegate = self
         return textField
     }()
-
+    
     lazy var userPasswordTextField: Goverment_TextField = {
         let textField = Goverment_TextField(placeholder: "Password")
         textField.delegate = self
@@ -52,7 +57,10 @@ class GovermentLoginViewUI: UIView {
         button.setTitle("Log in", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-        button.backgroundColor =   #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        button.layer.cornerRadius = 8.0
+        button.layer.borderWidth = 2.0
+        button.backgroundColor =   #colorLiteral(red: 0.8476062417, green: 0.8133529425, blue: 0.7713170648, alpha: 1)
+        button.layer.borderColor =  #colorLiteral(red: 0.2507791519, green: 0.2509659529, blue: 0.2881665826, alpha: 1)
         button.isEnabled = false
         return button
     }()
@@ -62,7 +70,10 @@ class GovermentLoginViewUI: UIView {
         button.setTitle("Register", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(registerTapped(_:)), for: .touchUpInside)
-        button.backgroundColor =   #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        button.layer.cornerRadius = 8.0
+        button.layer.borderWidth = 2.0
+        button.backgroundColor =   #colorLiteral(red: 0.8476062417, green: 0.8133529425, blue: 0.7713170648, alpha: 1)
+        button.layer.borderColor =  #colorLiteral(red: 0.2507791519, green: 0.2509659529, blue: 0.2881665826, alpha: 1)
         button.isEnabled = false
         return button
     }()
@@ -74,8 +85,8 @@ class GovermentLoginViewUI: UIView {
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 8.0
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor =  #colorLiteral(red: 0.2507791519, green: 0.2509659529, blue: 0.2881665826, alpha: 1)
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         let googleLogo = UIImageView(image: UIImage(named: "googleIcon"))
         googleLogo.contentMode = .scaleAspectFit
@@ -90,17 +101,40 @@ class GovermentLoginViewUI: UIView {
         return button
     }()
     
+    var faceBiometrictsButton: AnimationView = {
+        let animation = AnimationView(name: "Goverment_Lottie_faceBiometric")
+        animation.translatesAutoresizingMaskIntoConstraints = false
+        animation.loopMode = .loop
+        animation.play()
+        animation.isHidden = true
+        return animation
+    }()
+    
+    lazy var fingerBiometrictsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Enable biometrics", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(biometricsFingerTapped(_:)), for: .touchUpInside)
+        button.layer.cornerRadius = 8.0
+        button.layer.borderWidth = 2.0
+        button.backgroundColor =    #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
+        button.layer.borderColor =  #colorLiteral(red: 0.2507791519, green: 0.2509659529, blue: 0.2881665826, alpha: 1)
+        return button
+    }()
+    
     public convenience init(navigation: UINavigationController, delegate: GovermentLoginViewUIDelegate?) {
-            self.init()
-            self.delegate = delegate
-            self.navigationController = navigation
-            
-            let gestoTap = UITapGestureRecognizer(target: self, action: #selector(dissmisKeyboard(_:)))
-            addGestureRecognizer(gestoTap)
-            
-            setUI()
-            setConstraints()
-        }
+        self.init()
+        self.delegate = delegate
+        self.navigationController = navigation
+        
+        let gestoTap = UITapGestureRecognizer(target: self, action: #selector(dissmisKeyboard(_:)))
+        addGestureRecognizer(gestoTap)
+        let biometricsFaceTap = UITapGestureRecognizer(target: self, action: #selector(biometricsFaceTapped))
+        faceBiometrictsButton.addGestureRecognizer(biometricsFaceTap)
+        
+        setUI()
+        setConstraints()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,14 +145,16 @@ class GovermentLoginViewUI: UIView {
     }
     
     func setUI(){
-        backgroundColor = .white
+        backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         addSubview(welcomeLabel)
         addSubview(containerView)
-        containerView.addSubview(userlMailTextField)
-        containerView.addSubview(userPasswordTextField)
-        containerView.addSubview(continueButton)
-        containerView.addSubview(registerButton)
-        containerView.addSubview(googleButton)
+        containerView.addArrangedSubview(userlMailTextField)
+        containerView.addArrangedSubview(userPasswordTextField)
+        containerView.addArrangedSubview(continueButton)
+        containerView.addArrangedSubview(registerButton)
+        containerView.addArrangedSubview(googleButton)
+        containerView.addArrangedSubview(faceBiometrictsButton)
+        addSubview(fingerBiometrictsButton)
     }
     
     func setConstraints(){
@@ -129,7 +165,7 @@ class GovermentLoginViewUI: UIView {
             
             containerView.centerYAnchor.constraint(equalTo: centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
             userlMailTextField.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
@@ -157,15 +193,46 @@ class GovermentLoginViewUI: UIView {
             googleButton.trailingAnchor.constraint(equalTo: userlMailTextField.trailingAnchor),
             googleButton.heightAnchor.constraint(equalToConstant: 50),
             googleButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+            
+            faceBiometrictsButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            faceBiometrictsButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            faceBiometrictsButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            faceBiometrictsButton.heightAnchor.constraint(equalToConstant: 260),
+            faceBiometrictsButton.widthAnchor.constraint(equalToConstant: 260),
+            
+            fingerBiometrictsButton.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 30),
+            fingerBiometrictsButton.heightAnchor.constraint(equalToConstant: 50),
+            fingerBiometrictsButton.widthAnchor.constraint(equalToConstant: 200),
+            fingerBiometrictsButton.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }
     
-    @objc func dissmisKeyboard(_ sender: UITapGestureRecognizer){
+    @objc func dissmisKeyboard(_ sender: UITapGestureRecognizer) {
         self.endEditing(true)
     }
     
+    @objc func biometricsFaceTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.notifyLockInWithFaceBiometrics()
+    }
+    
+    @objc func biometricsFingerTapped(_ sender: UITapGestureRecognizer) {
+        userlMailTextField.isHidden = !userlMailTextField.isHidden
+        userPasswordTextField.isHidden = userlMailTextField.isHidden
+        continueButton.isHidden = userlMailTextField.isHidden
+        registerButton.isHidden = userlMailTextField.isHidden
+        googleButton.isHidden = userlMailTextField.isHidden
+        faceBiometrictsButton.isHidden = !faceBiometrictsButton.isHidden
+        fingerBiometrictsButton.setTitle(faceBiometrictsButton.isHidden ? "Enable biometrics" : "Disable biometrics", for: .normal)
+        layoutSubviews()
+        layoutIfNeeded()
+    }
+    
     @objc func buttonTapped(_ sender: UITapGestureRecognizer) {
-        delegate?.notifyCheckUserLogin(userInfo: UserInfo(userMail: userlMailTextField.text ?? "", userPassword: userPasswordTextField.text ?? ""))
+        if let password = userPasswordTextField.text, let email = userlMailTextField.text, email.isEmail() {
+            self.delegate?.notifyCheckUserLogin(userInfo: UserInfo(userMail: email, userPassword: password))
+        } else {
+            delegate?.notifyShowError(errorMessage: "Please use a valid email example: example@domain.extension")
+        }
     }
     
     @objc func registerTapped(_ sender: UIControl) {
@@ -186,21 +253,11 @@ extension GovermentLoginViewUI: UITextFieldDelegate {
         continueButton.isEnabled = (!(userlMailTextField.text?.isEmpty ?? false) && !(userPasswordTextField.text?.isEmpty ?? false))
         registerButton.isEnabled = continueButton.isEnabled
         if continueButton.isEnabled {
-            continueButton.backgroundColor =   #colorLiteral(red: 0.4548825622, green: 0.8329617977, blue: 0.4634124041, alpha: 1)
-            registerButton.backgroundColor =   #colorLiteral(red: 0.4548825622, green: 0.8329617977, blue: 0.4634124041, alpha: 1)
+            continueButton.backgroundColor =   #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
+            registerButton.backgroundColor =   #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
         } else {
-            continueButton.backgroundColor =   #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-            registerButton.backgroundColor =   #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            continueButton.backgroundColor =   #colorLiteral(red: 0.8476062417, green: 0.8133529425, blue: 0.7713170648, alpha: 1)
+            registerButton.backgroundColor =   #colorLiteral(red: 0.8476062417, green: 0.8133529425, blue: 0.7713170648, alpha: 1)
         }
     }
 }
-
-//extension GovermentLoginViewUI: GIDSignInDelegate {
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//        if let error = error {
-//            delegate?.notifyShowError(errorMessage: "Error during Google Sign-In: \(error.localizedDescription)")
-//        } else {
-//            delegate?.notifyCheckGoogleLogin()
-//        }
-//    }
-//}

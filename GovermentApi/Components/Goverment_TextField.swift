@@ -13,9 +13,9 @@ class Goverment_TextField: UITextField {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor =  #colorLiteral(red: 0.2507791519, green: 0.2509659529, blue: 0.2881665826, alpha: 1)
         self.placeholder = placeholder
-        layer.borderWidth = 0.5
+        layer.borderWidth = 2
         layer.cornerRadius = 10
         textColor = .black
         backgroundColor = .white

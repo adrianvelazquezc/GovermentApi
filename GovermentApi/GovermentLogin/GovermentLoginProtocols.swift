@@ -17,6 +17,8 @@ protocol GovermentLoginInteractorProtocol: AnyObject {
     func authenticateUserLogin(userInfo: UserInfo)
     func postNewUser(userInfo: UserInfo)
     func fetchLognInWithGoogle(present: UIViewController)
+    func authenticateFaceBiometricsLogin()
+    func authenticateFingerBiometricsLogin()
 }
 
 protocol GovermentLoginPresenterProtocol: AnyObject {
@@ -31,6 +33,12 @@ protocol GovermentLoginPresenterProtocol: AnyObject {
     //access using google button
     func requestCheckGoogleLogin(present: UIViewController)
     func responseCheckGoogleLogin()
+    
+    //biometrics
+    func requestLoginWithFaceBiometrics()
+    func responseLoginWithFaceBiometrics()
+    func requestLoginWithFingerBiometrics()
+    func responseLoginWithFingerBiometrics()
     
     func responseErrorInfo(error: String)
 }

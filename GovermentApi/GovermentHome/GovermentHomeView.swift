@@ -22,6 +22,11 @@ class GovermentHomeView: UIViewController {
             )
             view = ui
         }
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 }
 

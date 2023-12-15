@@ -40,7 +40,7 @@ class GovermentHomeViewUI: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .white
+        tableView.backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         return tableView
     }()
     
@@ -63,7 +63,7 @@ class GovermentHomeViewUI: UIView {
     }
     
     func setUI() {
-        backgroundColor = .white
+        backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         addSubview(searchBar)
         addSubview(tableView)
         addSubview(dropdownButton)
@@ -117,6 +117,7 @@ extension GovermentHomeViewUI: UITableViewDelegate,  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GovermentTableViewCell", for: indexPath) as! GovermentTableViewCell
+        cell.backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         cell.idLabel.text = elementList[indexPath.row].id
         cell.organizationLabel.text = elementList[indexPath.row].organization
         cell.urlLabel.text = "\(elementList[indexPath.row].url)"

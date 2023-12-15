@@ -23,7 +23,7 @@ open class Goverment_DropdownView: UIView {
         button.setTitle("v", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10
-        button.backgroundColor = .systemPink
+        button.backgroundColor =  #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
         button.addTarget(self, action: #selector(selectAnOption), for: .touchUpInside)
         return button
     }()
@@ -60,7 +60,7 @@ open class Goverment_DropdownView: UIView {
         for element in incomingElementName {
             let titleForGender = Goverment_DropdownViewButton(element)
             titleForGender.translatesAutoresizingMaskIntoConstraints = false
-            titleForGender.backgroundColor = .link
+            titleForGender.backgroundColor =  #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
             titleForGender.layer.cornerRadius = 15
             titleForGender.addTarget(self, action: #selector(genderChoosedTapped(_:)), for: .touchUpInside)
             

@@ -21,7 +21,7 @@ class GovermentSplashView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         view.addSubview(animationView)
         setConstraints()
         animationView.play { finished in
@@ -33,7 +33,13 @@ class GovermentSplashView: UIViewController {
                 }
             }
         }
+        setNeedsStatusBarAppearanceUpdate()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
     func setConstraints() {
         NSLayoutConstraint.activate([
             animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

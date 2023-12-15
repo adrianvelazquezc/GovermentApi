@@ -42,6 +42,26 @@ extension GovermentLoginPresenter: GovermentLoginPresenterProtocol {
         router?.navigateToNextView()
     }
     
+    func requestLoginWithFingerBiometrics() {
+        view?.showLoading()
+        interactor?.authenticateFingerBiometricsLogin()
+    }
+    
+    func responseLoginWithFingerBiometrics() {
+        view?.dissmissLoading()
+        router?.navigateToNextView()
+    }
+    
+    func requestLoginWithFaceBiometrics() {
+        view?.showLoading()
+        interactor?.authenticateFaceBiometricsLogin()
+    }
+    
+    func responseLoginWithFaceBiometrics() {
+        view?.dissmissLoading()
+        router?.navigateToNextView()
+    }
+    
     func responseErrorInfo(error: String) {
         view?.dissmissLoading()
         view?.notifyError(error: error)

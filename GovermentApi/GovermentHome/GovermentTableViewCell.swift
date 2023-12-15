@@ -13,6 +13,7 @@ class GovermentTableViewCell: UITableViewCell {
     
     public var idLabelTitle: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Id: "
@@ -21,8 +22,9 @@ class GovermentTableViewCell: UITableViewCell {
     
     public var idLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.minimumScaleFactor = 0.7
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -30,6 +32,7 @@ class GovermentTableViewCell: UITableViewCell {
     
     public var organizationTitle: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Organization: "
@@ -38,8 +41,9 @@ class GovermentTableViewCell: UITableViewCell {
     
     public var organizationLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.minimumScaleFactor = 0.7
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -48,6 +52,7 @@ class GovermentTableViewCell: UITableViewCell {
     public var urlLabelTitle: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Url: "
         return label
@@ -55,8 +60,9 @@ class GovermentTableViewCell: UITableViewCell {
     
     public var urlLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor =  #colorLiteral(red: 0.3916504979, green: 0.2293888927, blue: 0.359031111, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.numberOfLines = 3
         label.minimumScaleFactor = 0.7
         label.adjustsFontSizeToFitWidth = true
@@ -74,7 +80,7 @@ class GovermentTableViewCell: UITableViewCell {
     }
     
     fileprivate func setupUIElements() {
-        backgroundColor = .white
+        backgroundColor = .clear
         addSubview(idLabelTitle)
         addSubview(idLabel)
         addSubview(organizationTitle)

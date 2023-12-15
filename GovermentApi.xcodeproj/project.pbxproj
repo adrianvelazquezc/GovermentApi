@@ -68,6 +68,8 @@
 		CED962DF2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962DE2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift */; };
 		CED962E12B2C07D200DAF5BE /* GovermentDetailsMainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962E02B2C07D200DAF5BE /* GovermentDetailsMainTest.swift */; };
 		CED962E52B2C228200DAF5BE /* GovermentTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962E42B2C228200DAF5BE /* GovermentTableViewCellTest.swift */; };
+		CEF193552B2CEED8001136C6 /* Goverment_Lottie_faceBiometric.json in Resources */ = {isa = PBXBuildFile; fileRef = CEF193542B2CEED8001136C6 /* Goverment_Lottie_faceBiometric.json */; };
+		CEF193572B2CF172001136C6 /* Goverment_Lottie_FingerBiometric.json in Resources */ = {isa = PBXBuildFile; fileRef = CEF193562B2CF172001136C6 /* Goverment_Lottie_FingerBiometric.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,8 @@
 		CED962DE2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentHomeRouterTest.swift; sourceTree = "<group>"; };
 		CED962E02B2C07D200DAF5BE /* GovermentDetailsMainTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsMainTest.swift; sourceTree = "<group>"; };
 		CED962E42B2C228200DAF5BE /* GovermentTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentTableViewCellTest.swift; sourceTree = "<group>"; };
+		CEF193542B2CEED8001136C6 /* Goverment_Lottie_faceBiometric.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Goverment_Lottie_faceBiometric.json; sourceTree = "<group>"; };
+		CEF193562B2CF172001136C6 /* Goverment_Lottie_FingerBiometric.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Goverment_Lottie_FingerBiometric.json; sourceTree = "<group>"; };
 		D1393A45724C7575A49EEBFD /* Pods-GovermentApiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GovermentApiTests.debug.xcconfig"; path = "Target Support Files/Pods-GovermentApiTests/Pods-GovermentApiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4FAA025EA885448DCDC9997 /* Pods_GovermentApiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GovermentApiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -360,7 +364,9 @@
 		CED962C72B2BDEE300DAF5BE /* Lotties */ = {
 			isa = PBXGroup;
 			children = (
+				CEF193542B2CEED8001136C6 /* Goverment_Lottie_faceBiometric.json */,
 				CED962C82B2BDF1900DAF5BE /* Goverment_Lottie_Loading.json */,
+				CEF193562B2CF172001136C6 /* Goverment_Lottie_FingerBiometric.json */,
 			);
 			path = Lotties;
 			sourceTree = "<group>";
@@ -458,8 +464,10 @@
 			files = (
 				CED962D12B2BFB6700DAF5BE /* GoogleService-Info.plist in Resources */,
 				CEC4F9E12B28F4CE00C80226 /* LaunchScreen.storyboard in Resources */,
+				CEF193572B2CF172001136C6 /* Goverment_Lottie_FingerBiometric.json in Resources */,
 				CEC4F9DE2B28F4CE00C80226 /* Assets.xcassets in Resources */,
 				CED962C92B2BDF1900DAF5BE /* Goverment_Lottie_Loading.json in Resources */,
+				CEF193552B2CEED8001136C6 /* Goverment_Lottie_faceBiometric.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,6 +794,7 @@
 				DEVELOPMENT_TEAM = 2RHXBRCF87;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GovermentApi/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use biometric authentication to secure your account.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide personalized services.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location when the app is in use to enhance the user experience.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -818,6 +827,7 @@
 				DEVELOPMENT_TEAM = 2RHXBRCF87;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GovermentApi/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use biometric authentication to secure your account.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide personalized services.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location when the app is in use to enhance the user experience.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -21,7 +21,7 @@ open class Goverment_Alert: UIView {
         view.layer.cornerRadius = 30
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowColor = UIColor.clear.cgColor
-        view.layer.backgroundColor = UIColor.white.cgColor
+        view.layer.backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -37,6 +37,7 @@ open class Goverment_Alert: UIView {
     private lazy var lbTitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.numberOfLines = 3
         label.textAlignment = .center
         label.minimumScaleFactor = 0.6
@@ -58,15 +59,15 @@ open class Goverment_Alert: UIView {
     
     private lazy var separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor =  #colorLiteral(red: 0.2507791519, green: 0.2509659529, blue: 0.2881665826, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var btnAccept: UIButton = {
         let button = UIButton()
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .lightGray
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor =  #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
         button.addTarget(self, action: #selector(continueAction(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -76,7 +77,7 @@ open class Goverment_Alert: UIView {
         let button = UIButton()
         button.setTitle("X", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .lightGray
+        button.backgroundColor =  .clear
         button.addTarget(self, action: #selector(continueAction(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

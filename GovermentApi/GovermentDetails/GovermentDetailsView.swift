@@ -23,12 +23,17 @@ class GovermentDetailsView: UIViewController {
             )
             view = ui
         }
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewDidLoad() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
     
     func notifyError(error: String) {
