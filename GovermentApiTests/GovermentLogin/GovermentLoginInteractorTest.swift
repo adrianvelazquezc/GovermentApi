@@ -30,6 +30,6 @@ final class GovermentLoginInteractorTest: XCTestCase {
     }
     
     func testShouldCallFetchLognInWithGoogle() {
-        XCTAssertNotNil(sut.fetchLognInWithGoogle(present: UIViewController()))
+        XCTAssertNotNil(sut.fetchLognInWithGoogle(present: UIViewController(), clientID: nil))
     }
 }

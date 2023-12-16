@@ -112,7 +112,6 @@ class GovermentLoginViewUI: UIView {
     lazy var biometricsCheckButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.tintColor =  #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
-        button.setImage(UIImage(named: "checkIcon"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(self.biometricsTapped(_:)), for: .touchUpInside)
         button.layer.borderWidth = 2.0
@@ -242,7 +241,7 @@ class GovermentLoginViewUI: UIView {
         googleButton.isHidden = userlMailTextField.isHidden
         faceBiometrictsButton.isHidden = !faceBiometrictsButton.isHidden
         enableBiometrictsButton.setTitle(faceBiometrictsButton.isHidden ? "Enable biometrics" : "Disable biometrics", for: .normal)
-        biometricsCheckButton.setImage(faceBiometrictsButton.isHidden ? UIImage(named: "checkIcon") : UIImage(named: "") , for: .normal)
+        biometricsCheckButton.setImage(faceBiometrictsButton.isHidden ? UIImage(named: "") : UIImage(named: "checkIcon") , for: .normal)
         layoutSubviews()
         layoutIfNeeded()
     }

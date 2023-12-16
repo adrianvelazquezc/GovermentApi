@@ -17,17 +17,14 @@ class GovermentLoginPresenter {
 
 extension GovermentLoginPresenter: GovermentLoginPresenterProtocol {
     func requestLoginWithBiometrics(present: UIViewController) {
-        if let clientID = UserDefaults.standard.string(forKey: "clientID") {
+        if let userMail = UserDefaults.standard.string(forKey: "userMail"),
+           let userPassword = UserDefaults.standard.string(forKey: "userPassword") {
+            let userInfo = UserInfo(userMail: userMail, userPassword: userPassword)
+            interactor?.authenticateUserLogin(userInfo: userInfo)
+        } else if let clientID = UserDefaults.standard.string(forKey: "clientID") {
             interactor?.fetchLognInWithGoogle(present: present, clientID: clientID)
         } else {
-            if let userMail = UserDefaults.standard.string(forKey: "userMail"),
-               let userPassword = UserDefaults.standard.string(forKey: "userPassword") {
-                let userInfo = UserInfo(userMail: userMail, userPassword: userPassword)
-                interactor?.authenticateUserLogin(userInfo: userInfo)
-            } else {
-                view?.dissmissLoading()
-                view?.notifyError(error: "User information not found.")
-            }
+            view?.notifyError(error: "User information not found.")
         }
     }
     

@@ -26,7 +26,7 @@ final class GovermentLoginPresenterTest: XCTestCase {
     }
     
     func testShouldCallResponseNewUserLogin() {
-        XCTAssertNotNil(sut.responseNewUserLogin())
+        XCTAssertNotNil(sut.responseNewUserLogin(userInfo: userInfoMock))
     }
     
     func testShouldCallRequestUserLogin() {
@@ -34,7 +34,7 @@ final class GovermentLoginPresenterTest: XCTestCase {
     }
     
     func testShouldCallResponseUserLogin() {
-        XCTAssertNotNil(sut.responseUserLogin())
+        XCTAssertNotNil(sut.responseUserLogin(userInfo: userInfoMock))
     }
     
     func testShouldCallRequestCheckGoogleLogin() {
@@ -42,7 +42,7 @@ final class GovermentLoginPresenterTest: XCTestCase {
     }
     
     func testShouldCallResponseCheckGoogleLogin() {
-        XCTAssertNotNil(sut.responseCheckGoogleLogin())
+        XCTAssertNotNil(sut.responseCheckGoogleLogin(clientID: "123456"))
     }
     
     func testShouldCallResponseErrorInfo() {

@@ -13,7 +13,7 @@ final class GovermentLoginUiViewTest: XCTestCase {
     var mockGestureRecognizer: UITapGestureRecognizer!
     
     override func setUpWithError() throws {
-        sut = GovermentLoginViewUI(navigation: UINavigationController(), delegate: nil)
+        sut = GovermentLoginViewUI(navigation: UINavigationController(), delegate: nil, isEnableActivated: false)
         mockGestureRecognizer = UITapGestureRecognizer()
     }
     
