@@ -61,7 +61,6 @@ extension GovermentHomeView: GovermentHomeViewUIDelegate {
                     tempList.append(noNilInfo.results[index])
                 }
             }
-            print("counterList: \(counterList), endIndex: \(endIndex), total: \(noNilInfo.pagination.total)")
 
             guard counterList < noNilInfo.pagination.total else {
                 ui?.isSendingRequest = false
