@@ -11,21 +11,25 @@ class GovermentSplashPresenter {
     var interactor: GovermentSplashInteractorProtocol?
     var router: GovermentSplashRouterProtocol?
     weak var view: GovermentSplashViewProtocol?
+    var tempResponseData: Response?
 }
 
 extension GovermentSplashPresenter: GovermentSplashPresenterProtocol {
     func requestInfo() {
-        view?.showLoading()
         interactor?.fetchData()
     }
     
     func responseInfo(responseData: Response) {
-        view?.dissmissLoading()
-        router?.navigateToNextView(responseData: responseData)
+        tempResponseData = responseData
     }
     
     func responseErrorInfo(error: String) {
-        view?.dissmissLoading()
         view?.notifyError(error: error)
+    }
+    
+    func requestNextView() {
+        if let noNilResponse = tempResponseData {
+            router?.navigateToNextView(responseData: noNilResponse)
+        }
     }
 }

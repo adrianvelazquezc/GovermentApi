@@ -14,7 +14,8 @@ class GovermentLoginView: UIViewController {
     override func loadView() {
         ui = GovermentLoginViewUI(
             navigation: self.navigationController ?? UINavigationController(),
-            delegate: self
+            delegate: self,
+            isEnableActivated: presenter?.isUserAlredyLoggedIn() ?? false
         )
         view = ui
         setNeedsStatusBarAppearanceUpdate()
@@ -83,12 +84,8 @@ extension GovermentLoginView: GovermentLoginViewUIDelegate {
         }
     }
     
-    func notifyLockInWithFingerBiometrics() {
-        presenter?.requestLoginWithFingerBiometrics()
-    }
-    
     func notifyLockInWithFaceBiometrics() {
-        presenter?.requestLoginWithFaceBiometrics()
+        presenter?.requestLoginWithFaceBiometrics(present: self)
     }
     
     func notifyShowError(errorMessage: String) {

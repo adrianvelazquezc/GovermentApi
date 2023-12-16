@@ -13,7 +13,6 @@ protocol GovermentLoginViewUIDelegate {
     func notifyRegisterUser(userInfo: UserInfo)
     func notifyCheckGoogleLogin()
     func notifyShowError(errorMessage: String)
-    func notifyLockInWithFingerBiometrics()
     func notifyLockInWithFaceBiometrics()
 }
 
@@ -110,11 +109,23 @@ class GovermentLoginViewUI: UIView {
         return animation
     }()
     
-    lazy var fingerBiometrictsButton: UIButton = {
+    lazy var biometricsCheckButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.tintColor =  #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
+        button.setImage(UIImage(named: "checkIcon"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(self.biometricsTapped(_:)), for: .touchUpInside)
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = UIColor.white.cgColor
+        button.backgroundColor = .white
+        return button
+    }()
+    
+    lazy var enableBiometrictsButton: UIButton = {
         let button = UIButton()
         button.setTitle("Enable biometrics", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(biometricsFingerTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(biometricsTapped(_:)), for: .touchUpInside)
         button.layer.cornerRadius = 8.0
         button.layer.borderWidth = 2.0
         button.backgroundColor =    #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
@@ -122,10 +133,12 @@ class GovermentLoginViewUI: UIView {
         return button
     }()
     
-    public convenience init(navigation: UINavigationController, delegate: GovermentLoginViewUIDelegate?) {
+    public convenience init(navigation: UINavigationController, delegate: GovermentLoginViewUIDelegate?, isEnableActivated: Bool) {
         self.init()
         self.delegate = delegate
         self.navigationController = navigation
+        biometricsCheckButton.isHidden = isEnableActivated
+        enableBiometrictsButton.isHidden = isEnableActivated
         
         let gestoTap = UITapGestureRecognizer(target: self, action: #selector(dissmisKeyboard(_:)))
         addGestureRecognizer(gestoTap)
@@ -154,7 +167,8 @@ class GovermentLoginViewUI: UIView {
         containerView.addArrangedSubview(registerButton)
         containerView.addArrangedSubview(googleButton)
         containerView.addArrangedSubview(faceBiometrictsButton)
-        addSubview(fingerBiometrictsButton)
+        addSubview(enableBiometrictsButton)
+        addSubview(biometricsCheckButton)
     }
     
     func setConstraints(){
@@ -200,10 +214,15 @@ class GovermentLoginViewUI: UIView {
             faceBiometrictsButton.heightAnchor.constraint(equalToConstant: 260),
             faceBiometrictsButton.widthAnchor.constraint(equalToConstant: 260),
             
-            fingerBiometrictsButton.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 30),
-            fingerBiometrictsButton.heightAnchor.constraint(equalToConstant: 50),
-            fingerBiometrictsButton.widthAnchor.constraint(equalToConstant: 200),
-            fingerBiometrictsButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            enableBiometrictsButton.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 30),
+            enableBiometrictsButton.heightAnchor.constraint(equalToConstant: 50),
+            enableBiometrictsButton.widthAnchor.constraint(equalToConstant: 240),
+            enableBiometrictsButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            biometricsCheckButton.centerYAnchor.constraint(equalTo: enableBiometrictsButton.centerYAnchor),
+            biometricsCheckButton.leadingAnchor.constraint(equalTo: enableBiometrictsButton.leadingAnchor, constant: 15),
+            biometricsCheckButton.widthAnchor.constraint(equalToConstant: 25),
+            biometricsCheckButton.heightAnchor.constraint(equalToConstant: 25),
         ])
     }
     
@@ -215,14 +234,15 @@ class GovermentLoginViewUI: UIView {
         delegate?.notifyLockInWithFaceBiometrics()
     }
     
-    @objc func biometricsFingerTapped(_ sender: UITapGestureRecognizer) {
+    @objc func biometricsTapped(_ sender: UITapGestureRecognizer) {
         userlMailTextField.isHidden = !userlMailTextField.isHidden
         userPasswordTextField.isHidden = userlMailTextField.isHidden
         continueButton.isHidden = userlMailTextField.isHidden
         registerButton.isHidden = userlMailTextField.isHidden
         googleButton.isHidden = userlMailTextField.isHidden
         faceBiometrictsButton.isHidden = !faceBiometrictsButton.isHidden
-        fingerBiometrictsButton.setTitle(faceBiometrictsButton.isHidden ? "Enable biometrics" : "Disable biometrics", for: .normal)
+        enableBiometrictsButton.setTitle(faceBiometrictsButton.isHidden ? "Enable biometrics" : "Disable biometrics", for: .normal)
+        biometricsCheckButton.setImage(faceBiometrictsButton.isHidden ? UIImage(named: "checkIcon") : UIImage(named: "") , for: .normal)
         layoutSubviews()
         layoutIfNeeded()
     }

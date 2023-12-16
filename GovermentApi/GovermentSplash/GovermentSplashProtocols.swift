@@ -9,8 +9,6 @@ import Foundation
 
 protocol GovermentSplashViewProtocol: AnyObject {
     func notifyError(error: String)
-    func showLoading()
-    func dissmissLoading()
 }
 
 protocol GovermentSplashInteractorProtocol: AnyObject {
@@ -21,6 +19,7 @@ protocol GovermentSplashPresenterProtocol: AnyObject {
     func requestInfo()
     func responseInfo(responseData: Response)
     func responseErrorInfo(error: String)
+    func requestNextView()
 }
 
 protocol GovermentSplashRouterProtocol: AnyObject {

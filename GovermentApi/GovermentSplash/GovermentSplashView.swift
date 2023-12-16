@@ -24,13 +24,14 @@ class GovermentSplashView: UIViewController {
         view.backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         view.addSubview(animationView)
         setConstraints()
-        animationView.play { finished in
-            Goverment_NetworkAvailable.checkInternet { (isConnected) in
-                if isConnected {
-                    self.presenter?.requestInfo()
-                } else {
-                    self.presenter?.responseErrorInfo(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
-                }
+        animationView.play() { finished in
+            self.presenter?.requestNextView()
+        }
+        Goverment_NetworkAvailable.checkInternet { (isConnected) in
+            if isConnected {
+                self.presenter?.requestInfo()
+            } else {
+                self.presenter?.responseErrorInfo(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
             }
         }
         setNeedsStatusBarAppearanceUpdate()
@@ -58,27 +59,17 @@ extension GovermentSplashView: GovermentSplashViewProtocol {
             alert.show()
         }
     }
-    
-    func showLoading() {
-        DispatchQueue.main.async {
-            Goverment_ActivityIndicator.show(parent: self.view)
-        }
-    }
-    
-    func dissmissLoading() {
-        DispatchQueue.main.async {
-            Goverment_ActivityIndicator.remove(parent: self.view)
-        }
-    }
 }
 
 extension GovermentSplashView: Goverment_AlertProtocol {
     func notifyAccept() {
+        animationView.play()
         isPresentingError = false
         presenter?.requestInfo()
     }
     
     func notifyCancel() {
+        animationView.play()
         isPresentingError = false
         presenter?.requestInfo()
     }

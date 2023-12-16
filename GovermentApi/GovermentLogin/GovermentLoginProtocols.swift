@@ -16,31 +16,31 @@ protocol GovermentLoginViewProtocol: AnyObject {
 protocol GovermentLoginInteractorProtocol: AnyObject {
     func authenticateUserLogin(userInfo: UserInfo)
     func postNewUser(userInfo: UserInfo)
-    func fetchLognInWithGoogle(present: UIViewController)
+    func fetchLognInWithGoogle(present: UIViewController, clientID: String?)
     func authenticateFaceBiometricsLogin()
-    func authenticateFingerBiometricsLogin()
 }
 
 protocol GovermentLoginPresenterProtocol: AnyObject {
     //register
     func requestNewUserLogin(userInfo: UserInfo)
-    func responseNewUserLogin()
+    func responseNewUserLogin(userInfo: UserInfo)
     
     //log in
     func requestUserLogin(userInfo: UserInfo)
-    func responseUserLogin()
+    func responseUserLogin(userInfo: UserInfo)
     
     //access using google button
     func requestCheckGoogleLogin(present: UIViewController)
-    func responseCheckGoogleLogin()
+    func responseCheckGoogleLogin(clientID: String)
     
     //biometrics
-    func requestLoginWithFaceBiometrics()
+    func requestLoginWithFaceBiometrics(present: UIViewController)
     func responseLoginWithFaceBiometrics()
-    func requestLoginWithFingerBiometrics()
-    func responseLoginWithFingerBiometrics()
+    
+    func requestLoginWithBiometrics(present: UIViewController)
     
     func responseErrorInfo(error: String)
+    func isUserAlredyLoggedIn() -> Bool
 }
 
 protocol GovermentLoginRouterProtocol: AnyObject {

@@ -22,7 +22,7 @@ extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
             (result, error) in
             DispatchQueue.main.async {
                 if let _ = result, error == nil {
-                    self.presenter?.responseNewUserLogin()
+                    self.presenter?.responseNewUserLogin(userInfo: userInfo)
                 } else {
                     self.presenter?.responseErrorInfo(error: error?.localizedDescription ?? "Looks like there were an error")
                 }
@@ -35,7 +35,7 @@ extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
             (result, error) in
             DispatchQueue.main.async {
                 if let _ = result, error == nil {
-                    self.presenter?.responseNewUserLogin()
+                    self.presenter?.responseNewUserLogin(userInfo: userInfo)
                 } else {
                     self.presenter?.responseErrorInfo(error: error?.localizedDescription ?? "Looks like there were an error")
                 }
@@ -43,9 +43,20 @@ extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
         }
     }
     
-    func fetchLognInWithGoogle(present: UIViewController) {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        let config = GIDConfiguration(clientID: clientID)
+    func fetchLognInWithGoogle(present: UIViewController, clientID: String?) {
+        var config: GIDConfiguration
+        
+        if let noNilClientId = clientID {
+            config = GIDConfiguration(clientID: noNilClientId)
+        } else {
+            guard let clientIDFromFirebase = FirebaseApp.app()?.options.clientID else {
+                self.presenter?.responseErrorInfo(error: "ClientID not found.")
+                return
+            }
+            
+            config = GIDConfiguration(clientID: clientIDFromFirebase)
+        }
+        
         GIDSignIn.sharedInstance.signIn(with: config, presenting: present) { user, error in
             guard error == nil else {
                 self.presenter?.responseErrorInfo(error: error?.localizedDescription ?? "Looks like there were an error")
@@ -65,7 +76,7 @@ extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
             Auth.auth().signIn(with: credential) { result, error in
                 DispatchQueue.main.async {
                     if let _ = result, error == nil {
-                        self.presenter?.responseNewUserLogin()
+                        self.presenter?.responseCheckGoogleLogin(clientID: config.clientID)
                     } else {
                         self.presenter?.responseErrorInfo(error: error?.localizedDescription ?? "Looks like there were an error")
                     }
@@ -74,33 +85,6 @@ extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
         }
     }
     
-    func authenticateFingerBiometricsLogin() {
-        let context = LAContext()
-        var error: NSError?
-
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Authenticate to log in"
-            
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, authenticationError) in
-                DispatchQueue.main.async {
-                    if success {
-                        self.presenter?.responseLoginWithFingerBiometrics()
-                    } else {
-                        if let error = authenticationError as? LAError {
-                            switch error.code {
-                            case .userCancel, .userFallback, .systemCancel:
-                                self.presenter?.responseErrorInfo(error: error.localizedDescription)
-                            default:
-                                self.presenter?.responseErrorInfo(error: "Looks like there were an error")
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
-            presenter?.responseErrorInfo(error: "Biometric authentication is not available on this device.")
-        }
-    }
     
     func authenticateFaceBiometricsLogin() {
         let context = LAContext()
@@ -112,7 +96,7 @@ extension GovermentLoginInteractor: GovermentLoginInteractorProtocol {
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, authenticationError) in
                 DispatchQueue.main.async {
                     if success {
-                        self.presenter?.responseLoginWithFingerBiometrics()
+                        self.presenter?.responseLoginWithFaceBiometrics()
                     } else {
                         if let error = authenticationError as? LAError {
                             switch error.code {
