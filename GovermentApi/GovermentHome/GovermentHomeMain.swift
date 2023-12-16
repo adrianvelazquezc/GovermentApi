@@ -13,18 +13,15 @@ open class GovermentHomeMain {
         if let view = viewController {
             let presenter = GovermentHomePresenter()
             let router = GovermentHomeRouter()
-            let interactor = GovermentHomeInteractor()
             
             view.presenter = presenter
             view.dataInfo = responseData
             
             presenter.view = view
-            presenter.interactor = interactor
             presenter.router = router
             
             router.navigation = navigation
-            
-            interactor.presenter = presenter
+    
             return view
         }
         return UIViewController()
