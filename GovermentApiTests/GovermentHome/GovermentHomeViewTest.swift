@@ -20,6 +20,10 @@ final class GovermentHomeViewTest: XCTestCase {
         sut = nil
     }
     
+    func testShouldCallStatusBarAppearanceUpdate() {
+        sut.setNeedsStatusBarAppearanceUpdate()
+    }
+    
     func testShoudLoadView() {
         let mockElementDetail = Result(id: "",
                                        dateInsert: "",
@@ -59,7 +63,12 @@ final class GovermentHomeViewTest: XCTestCase {
         XCTAssertFalse(Goverment_ActivityIndicator.isLoading(), "Loading indicator should not be animating after dismissal")
     }
     
+    
     func testShoudNotifyGetFilterString() {
+        XCTAssertNotNil(sut.notifyGetFilterString(filter: "abc"))
+    }
+    
+    func testShoudNotifyGetEmptyFilterString() {
         XCTAssertNotNil(sut.notifyGetFilterString(filter: ""))
     }
     
@@ -78,6 +87,18 @@ final class GovermentHomeViewTest: XCTestCase {
     }
     
     func testShoulCallAddNewValues() {
+        let mockElementDetail = Result(id: "",
+                                       dateInsert: "",
+                                       slug: "",
+                                       columns: "",
+                                       fact: "",
+                                       organization: "",
+                                       resource: "",
+                                       url: "",
+                                       operations: "",
+                                       dataset: "",
+                                       createdAt: 0)
+        XCTAssertNotNil(GovermentHomeMain.createModule(navigation: UINavigationController(), responseData: Response(pagination: Pagination(pageSize: 1, page: 1, total: 1), results: [mockElementDetail])))
         XCTAssertNotNil(sut.addNewValues())
     }
     

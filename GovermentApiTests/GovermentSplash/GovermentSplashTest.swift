@@ -19,6 +19,10 @@ final class GovermentSplashTest: XCTestCase {
         sut = nil
     }
     
+    func testShouldCallStatusBarAppearanceUpdate() {
+        sut.setNeedsStatusBarAppearanceUpdate()
+    }
+    
     func testShouldStart() {
         let expectation = XCTestExpectation(description: "ViewDidLoad")
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
@@ -61,6 +65,11 @@ final class GovermentSplashTest: XCTestCase {
             let endViews = alert.parentView?.subviews
             XCTAssertNotEqual(initialViews, endViews, "Expected subviews to change after hideAlertView")
         }
+    }
+    
+    func testShouldTryTestErrorInPresenter() {
+        let mockPrsenter = GovermentSplashPresenter()
+        XCTAssertNotNil(mockPrsenter.responseErrorInfo(error: "error"))
     }
 
     func testShouldCancel() {

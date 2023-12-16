@@ -48,5 +48,14 @@ final class GovermentLoginPresenterTest: XCTestCase {
     func testShouldCallResponseErrorInfo() {
         XCTAssertNotNil(sut.responseErrorInfo(error: "error"))
     }
+    
+    func testShouldCallResponseLoginWithFaceBiometrics() {
+        XCTAssertNotNil(sut.responseLoginWithFaceBiometrics())
+    }
+    
+    func testShouldCallRequestLoginWithFaceBiometrics() {
+        XCTAssertNotNil(sut.requestLoginWithFaceBiometrics(present: UIViewController()))
+    }
+    
 
 }

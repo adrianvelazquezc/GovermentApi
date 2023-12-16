@@ -21,6 +21,10 @@ final class GovermentLoginInteractorTest: XCTestCase {
         sut = nil
     }
     
+    func testShouldCallLoginUser() {
+        XCTAssertNotNil(sut.authenticateUserLogin(userInfo: UserInfo(userMail: "z@gmail.com", userPassword: "123456")))
+    }
+    
     func testShouldCallPostNewUser() {
         XCTAssertNotNil(sut.postNewUser(userInfo: userInfoMock))
     }
@@ -29,7 +33,7 @@ final class GovermentLoginInteractorTest: XCTestCase {
         XCTAssertNotNil(sut.authenticateUserLogin(userInfo: userInfoMock))
     }
     
-    func testShouldCallFetchLognInWithGoogle() {
-        XCTAssertNotNil(sut.fetchLognInWithGoogle(present: UIViewController(), clientID: nil))
+    func testShouldCallAuthenticateFaceBiometricsLogin() {
+        XCTAssertNotNil(sut.authenticateFaceBiometricsLogin())
     }
 }

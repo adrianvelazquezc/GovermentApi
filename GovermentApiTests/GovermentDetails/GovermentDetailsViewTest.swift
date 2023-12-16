@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import GovermentApi
+import CoreLocation
 
 final class GovermentDetailsViewTest: XCTestCase {
     var sut: GovermentDetailsView!
@@ -17,6 +18,10 @@ final class GovermentDetailsViewTest: XCTestCase {
     
     override func tearDownWithError() throws {
         sut = nil
+    }
+    
+    func testShouldCallStatusBarAppearanceUpdate() {
+        sut.setNeedsStatusBarAppearanceUpdate()
     }
     
     func testShoudLoadView() {
@@ -66,5 +71,9 @@ final class GovermentDetailsViewTest: XCTestCase {
     
     func testShouldNotifyToWhatsApp() {
         XCTAssertNotNil(sut.notifyShareInfoToWhatsapp(info: "Not empty Info"))
+    }
+    
+    func testShouldTryDidFailWithError() {
+        XCTAssertNotNil(sut.locationManager(CLLocationManager(), didFailWithError: NSError(domain: "YourErrorDomain", code: 123, userInfo: nil)))
     }
 }

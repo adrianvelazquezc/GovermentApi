@@ -50,7 +50,7 @@ final class GovermentDetailsViewUITest: XCTestCase {
         if let mockResult =  mockResult {
             sut = GovermentDetailsViewUI(navigation: UINavigationController(), delegate: nil, elementDetail: mockResult)
         }
-        XCTAssertNotNil(sut.buttonTapped(mockGestureRecognizer))
+        XCTAssertNotNil(sut.buttonTapped(UIButton()))
     }
     
     func testArrowTapped() {

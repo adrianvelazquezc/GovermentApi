@@ -20,6 +20,10 @@ final class GovermentLoginViewTest: XCTestCase {
         sut = nil
     }
     
+    func testShouldCallStatusBarAppearanceUpdate() {
+        sut.setNeedsStatusBarAppearanceUpdate()
+    }
+    
     func testShouldStart() {
         XCTAssertNotNil(sut.viewDidLoad())
     }
@@ -36,27 +40,34 @@ final class GovermentLoginViewTest: XCTestCase {
     }
     
     func testShouldShowLoading() {
-        let testView = UIView()
-        Goverment_ActivityIndicator.show(parent: testView)
+        sut.showLoading()
+        Goverment_ActivityIndicator.show(parent: sut.view)
         XCTAssertTrue(Goverment_ActivityIndicator.isLoading())
     }
     
     func testShouldRemoveLoading() {
-        let testView = UIView()
-        Goverment_ActivityIndicator.show(parent: testView)
-        Goverment_ActivityIndicator.remove(parent: testView)
+        sut.dissmissLoading()
+        Goverment_ActivityIndicator.remove(parent: sut.view)
         XCTAssertFalse(Goverment_ActivityIndicator.isLoading(), "Loading indicator should not be animating after dismissal")
     }
     
     func testShouldRegisterUser() {
-        sut.notifyRegisterUser(userInfo: UserInfo(userMail: "a", userPassword: "b"))
+        XCTAssertNotNil(sut.notifyRegisterUser(userInfo: UserInfo(userMail: "a", userPassword: "b")))
     }
     
     func testShouldLogInUser() {
-        sut.notifyCheckUserLogin(userInfo: UserInfo(userMail: "a", userPassword: "b"))
+        XCTAssertNotNil(sut.notifyCheckUserLogin(userInfo: UserInfo(userMail: "a", userPassword: "b")))
     }
     
     func testShouldLogInUserWithGoogle() {
-        sut.notifyCheckGoogleLogin()
+        XCTAssertNotNil(sut.notifyCheckGoogleLogin())
+    }
+    
+    func testNotifyLockInWithFaceBiometrics() {
+        XCTAssertNotNil(sut.notifyLockInWithFaceBiometrics)
+    }
+    
+    func testNotifyShowError() {
+        XCTAssertNotNil(sut.notifyShowError(errorMessage: "error"))
     }
 }
