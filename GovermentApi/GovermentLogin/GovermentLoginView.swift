@@ -49,39 +49,15 @@ extension GovermentLoginView: GovermentLoginViewProtocol {
 
 extension GovermentLoginView: GovermentLoginViewUIDelegate {
     func notifyRegisterUser(userInfo: UserInfo) {
-        Goverment_NetworkAvailable.checkInternet { isConnected in
-            DispatchQueue.main.async {
-                if isConnected {
-                    self.presenter?.requestNewUserLogin(userInfo: userInfo)
-                } else {
-                    self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
-                }
-            }
-        }
+        self.presenter?.requestNewUserLogin(userInfo: userInfo)
     }
     
     func notifyCheckUserLogin(userInfo: UserInfo) {
-        Goverment_NetworkAvailable.checkInternet { isConnected in
-            DispatchQueue.main.async {
-                if isConnected {
-                    self.presenter?.requestUserLogin(userInfo: userInfo)
-                } else {
-                    self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
-                }
-            }
-        }
+        self.presenter?.requestUserLogin(userInfo: userInfo)
     }
     
     func notifyCheckGoogleLogin() {
-        Goverment_NetworkAvailable.checkInternet { isConnected in
-            DispatchQueue.main.async {
-                if isConnected {
-                    self.presenter?.requestCheckGoogleLogin(present: self)
-                } else {
-                    self.notifyError(error: "Ops looks like there is a Network problem, please verify your connection and try again.")
-                }
-            }
-        }
+        self.presenter?.requestCheckGoogleLogin(present: self)
     }
     
     func notifyLockInWithFaceBiometrics() {

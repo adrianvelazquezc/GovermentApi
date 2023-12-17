@@ -27,7 +27,7 @@ class GovermentHomeViewUI: UIView {
         return textField
     }()
     
-    private lazy var dropdownButton: Goverment_DropdownView = {
+    lazy var dropdownButton: Goverment_DropdownView = {
         let button = Goverment_DropdownView(incomingElementName: ["id", "organization", "urlLabel"], parent: self)
         button.delegate = self
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +41,7 @@ class GovermentHomeViewUI: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
+        tableView.indicatorStyle = .black
         return tableView
     }()
     
@@ -50,6 +51,7 @@ class GovermentHomeViewUI: UIView {
         self.navigationController = navigation
         self.originalElementList = responseData
         
+        searchInfo()
         setUI()
         setConstraints()
     }
@@ -93,7 +95,7 @@ class GovermentHomeViewUI: UIView {
         self.endEditing(true)
     }
     
-    @objc func searchInfo(){
+    @objc func searchInfo() {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchInfoWithDelay), object: nil)
         self.perform(#selector(searchInfoWithDelay), with: nil, afterDelay: 0.5)
     }

@@ -22,7 +22,7 @@ final class GovermentLoginInteractorTest: XCTestCase {
     }
     
     func testShouldCallLoginUser() {
-        XCTAssertNotNil(sut.authenticateUserLogin(userInfo: UserInfo(userMail: "z@gmail.com", userPassword: "123456")))
+        XCTAssertNotNil(sut.authenticateUserLogin(userInfo: UserInfo(userMail: "b@gmail.com", userPassword: "123456")))
     }
     
     func testShouldCallPostNewUser() {

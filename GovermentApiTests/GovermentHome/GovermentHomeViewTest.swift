@@ -51,6 +51,17 @@ final class GovermentHomeViewTest: XCTestCase {
         wait(for: [expectation], timeout: 4.0)
     }
     
+    func testShouldShowErrorWithEmptyView() {
+        let expectation = XCTestExpectation(description: "Waiting for the alert to be presented")
+        sut.notifyError(error: "test1")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            let presentedAlert = self.sut.view.subviews.compactMap { $0 as? Goverment_Alert }.first
+            XCTAssertNotNil(presentedAlert, "The alert has not been presented")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 4.0)
+    }
+    
     func testShouldShowLoading() {
         sut.showLoading()
         Goverment_ActivityIndicator.show(parent: sut.view)
@@ -98,7 +109,8 @@ final class GovermentHomeViewTest: XCTestCase {
                                        operations: "",
                                        dataset: "",
                                        createdAt: 0)
-        XCTAssertNotNil(GovermentHomeMain.createModule(navigation: UINavigationController(), responseData: Response(pagination: Pagination(pageSize: 1, page: 1, total: 1), results: [mockElementDetail])))
+        
+        sut.dataInfo = Response(pagination: Pagination(pageSize: 1, page: 1, total: 1), results: [mockElementDetail])
         XCTAssertNotNil(sut.addNewValues())
     }
     

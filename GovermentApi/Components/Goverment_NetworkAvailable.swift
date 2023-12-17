@@ -15,8 +15,6 @@ class Goverment_NetworkAvailable {
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
                 completionHandler(true)
-            } else {
-                completionHandler(false)
             }
         }
         let queue = DispatchQueue(label: "NetworkMonitor")

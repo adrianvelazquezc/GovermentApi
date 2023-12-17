@@ -10,7 +10,7 @@ import UIKit
 class GovermentHomeView: UIViewController {
     var presenter: GovermentHomePresenterProtocol?
     private var ui: GovermentHomeViewUI?
-    internal var dataInfo: Response?
+    var dataInfo: Response?
     internal var counterList = 20
     
     override func loadView() {

@@ -15,7 +15,7 @@ class GovermentSplashView: UIViewController {
     public lazy var animationView: AnimationView = {
         let animation = AnimationView(name: "Goverment_Lottie_Loading")
         animation.translatesAutoresizingMaskIntoConstraints = false
-        animation.loopMode = .playOnce
+        animation.loopMode = .loop
         return animation
     }()
     
@@ -24,12 +24,13 @@ class GovermentSplashView: UIViewController {
         view.backgroundColor =  #colorLiteral(red: 0.8861745, green: 0.9654828906, blue: 0.867546916, alpha: 1)
         view.addSubview(animationView)
         setConstraints()
-        animationView.play() { finished in
-            self.presenter?.requestNextView()
-        }
+        animationView.play()
         Goverment_NetworkAvailable.checkInternet { (isConnected) in
             if isConnected {
                 self.presenter?.requestInfo()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                    self.presenter?.requestNextView()
+                }
             } else {
                 self.presenter?.responseErrorInfo(error: "Ops looks like there is a Network problem, please verify your conection and try again.")
             }

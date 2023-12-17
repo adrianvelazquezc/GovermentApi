@@ -16,7 +16,7 @@ open class Goverment_DropdownView: UIView {
     public var heightSize = 0.0
     public var parent: UIView?
     private var scrollViewHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    private var isShowing = false
+    var isShowing = false
     
     private lazy var choosedButton: UIButton = {
         let button = UIButton()

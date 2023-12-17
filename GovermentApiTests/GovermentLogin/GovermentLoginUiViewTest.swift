@@ -26,6 +26,8 @@ final class GovermentLoginUiViewTest: XCTestCase {
     }
     
     func testShoulLogInWithUser() {
+        sut.userPasswordTextField.text = "test@domain.com"
+        sut.userlMailTextField.text = "123456"
         XCTAssertNotNil(sut.buttonTapped(mockGestureRecognizer))
     }
     
@@ -39,7 +41,12 @@ final class GovermentLoginUiViewTest: XCTestCase {
     }
     
     func testShoulRegisterUser() {
+        sut.userPasswordTextField.text = "test@domain.com"
+        sut.userlMailTextField.text = "123456"
         XCTAssertNotNil(sut.registerTapped(UIButton()))
+    }
+    func testShoulCallGoogleTapped() {
+        XCTAssertNotNil(sut.googleTapped(UIButton()))
     }
     
     func testShouldChangeInputText() {
@@ -58,5 +65,17 @@ final class GovermentLoginUiViewTest: XCTestCase {
         let mockView = GovermentLoginViewUI()
         mockView.continueButton.isEnabled = true
         XCTAssertNotNil(sut.textFieldDidChangeSelection(mockView.userlMailTextField))
+    }
+    
+    func testShouldCallComponentGoverment_TextField() {
+        XCTAssertNotNil(Goverment_TextField(placeholder: "test"))
+    }
+    
+    func testShouldCallBiometricsFaceTapped() {
+        XCTAssertNotNil(sut.biometricsFaceTapped(mockGestureRecognizer))
+    }
+    
+    func testShouldCallBiometricsTapped() {
+        XCTAssertNotNil(sut.biometricsTapped(mockGestureRecognizer))
     }
 }

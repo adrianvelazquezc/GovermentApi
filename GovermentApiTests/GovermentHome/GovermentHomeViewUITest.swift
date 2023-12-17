@@ -25,7 +25,7 @@ final class GovermentHomeViewUITest: XCTestCase {
         XCTAssertNotNil(sut.dissmisKeyboard(mockGestureRecognizer))
     }
     
-    func testShouldsearchInfo() {
+    func testShouldSearchInfo() {
         XCTAssertNotNil(sut.searchInfo)
     }
     
@@ -75,7 +75,7 @@ final class GovermentHomeViewUITest: XCTestCase {
                                                createdAt: 0)]
         mockView.elementList = mockView.originalElementList
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-//            XCTAssertNotNil(self.sut.tableView(UITableView(), cellForRowAt: IndexPath(item: 0, section: 0)))
+            //            XCTAssertNotNil(self.sut.tableView(UITableView(), cellForRowAt: IndexPath(item: 0, section: 0)))
         }
     }
     
@@ -85,5 +85,29 @@ final class GovermentHomeViewUITest: XCTestCase {
     
     func testShouldCallDidSelectRowAt() {
         XCTAssertNotNil(sut.tableView(UITableView(), didSelectRowAt: IndexPath(item: 1, section: 1)))
+    }
+    
+    func testShouldCallSelectAnOptionWhileIsShowing() {
+        sut.dropdownButton.isShowing = true
+        XCTAssertNotNil(sut.dropdownButton.selectAnOption())
+    }
+    
+    func testShouldCallSelectAnOptionWhileIsNotShowing() {
+        sut.dropdownButton.isShowing = false
+        XCTAssertNotNil(sut.dropdownButton.selectAnOption())
+    }
+    
+    func testShouldCallSelectGenderChoosedTapped() {
+        sut.dropdownButton.isShowing = false
+        XCTAssertNotNil(sut.dropdownButton.genderChoosedTapped(Goverment_DropdownViewButton("test1")))
+    }
+    
+    func testShouldCallHiddeWhenTapped() {
+        sut.dropdownButton.isShowing = false
+        XCTAssertNotNil(sut.dropdownButton.hiddeWhenTapped())
+    }
+    
+    func testShouldCallDidChoiceFilter() {
+        XCTAssertNotNil(sut.didChoiceFilter("test1"))
     }
 }
