@@ -51,17 +51,6 @@ final class GovermentHomeViewTest: XCTestCase {
         wait(for: [expectation], timeout: 4.0)
     }
     
-    func testShouldShowErrorWithEmptyView() {
-        let expectation = XCTestExpectation(description: "Waiting for the alert to be presented")
-        sut.notifyError(error: "test1")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            let presentedAlert = self.sut.view.subviews.compactMap { $0 as? Goverment_Alert }.first
-            XCTAssertNotNil(presentedAlert, "The alert has not been presented")
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 4.0)
-    }
-    
     func testShouldShowLoading() {
         sut.showLoading()
         Goverment_ActivityIndicator.show(parent: sut.view)

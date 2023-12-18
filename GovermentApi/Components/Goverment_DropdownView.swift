@@ -25,6 +25,8 @@ open class Goverment_DropdownView: UIView {
         button.layer.cornerRadius = 10
         button.backgroundColor =  #colorLiteral(red: 0.2954775095, green: 0.4989314675, blue: 0.4466043711, alpha: 1)
         button.addTarget(self, action: #selector(selectAnOption), for: .touchUpInside)
+        button.titleLabel?.minimumScaleFactor = 0.7
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         return button
     }()
     private lazy var scrollView: UIScrollView = {
@@ -49,12 +51,7 @@ open class Goverment_DropdownView: UIView {
         addSubview(choosedButton)
         self.parent?.addSubview(scrollView)
         scrollView.addSubview(stackView)
-        
-        if incomingElementName.count > 3 {
-            heightSize = (3.5 * 40)
-        } else {
-            heightSize = Double((incomingElementName.count * 40))
-        }
+        heightSize = 120
         setSecondsConstrains()
         
         for element in incomingElementName {
@@ -66,7 +63,7 @@ open class Goverment_DropdownView: UIView {
             
             stackView.addArrangedSubview(titleForGender)
             NSLayoutConstraint.activate([
-                titleForGender.heightAnchor.constraint(equalToConstant: 40),
+                titleForGender.heightAnchor.constraint(equalToConstant: 35),
                 titleForGender.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
                 titleForGender.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
                 titleForGender.widthAnchor.constraint(equalTo: stackView.widthAnchor),
@@ -97,6 +94,7 @@ open class Goverment_DropdownView: UIView {
             self.parent?.layoutIfNeeded()
             self.isShowing = false
         }
+        choosedButton.setTitle("\(elementName) v", for: .normal)
         delegate?.didChoiceFilter(elementName)
     }
     

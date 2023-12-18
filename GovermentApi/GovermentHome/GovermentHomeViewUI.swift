@@ -143,7 +143,10 @@ extension GovermentHomeViewUI: UITableViewDelegate,  UITableViewDataSource {
 }
 extension GovermentHomeViewUI: Goverment_DropdownViewProtocol {
     func didChoiceFilter(_ elementToFilter: String) {
+        searchBar.text = ""
+        delegate?.notifyGetFilterString(filter: "")
         searchBar.updatePlaceholderTextWith("Insert \(elementToFilter) to track")
         currentSearch = CurrentSearch(rawValue: elementToFilter) ?? .id
+        tableView.reloadData()
     }
 }

@@ -42,6 +42,7 @@ class GovermentLoginViewUI: UIView {
     lazy var userlMailTextField: Goverment_TextField = {
         let textField = Goverment_TextField(placeholder: "Email")
         textField.delegate = self
+        textField.tag = 1
         return textField
     }()
     
@@ -277,6 +278,21 @@ extension GovermentLoginViewUI: UITextFieldDelegate {
         } else {
             continueButton.backgroundColor =   #colorLiteral(red: 0.8476062417, green: 0.8133529425, blue: 0.7713170648, alpha: 1)
             registerButton.backgroundColor =   #colorLiteral(red: 0.8476062417, green: 0.8133529425, blue: 0.7713170648, alpha: 1)
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == 1 {
+            if string == "@" && (textField.text?.contains("@") ?? false) {
+                return false
+            }
+            let allowedCharacters = CharacterSet(charactersIn: "@.! # $ % & ' * + - / = ? ^ _ ` { | } ~")
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet) || CharacterSet.alphanumerics.isSuperset(of: characterSet)
+        } else {
+            let allowedCharacters = CharacterSet(charactersIn: "@ . , ! ¡ # $ % & ' * + - / = ¿ ?")
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet) || CharacterSet.alphanumerics.isSuperset(of: characterSet)
         }
     }
 }
