@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AB555417C5D5E65C4BC338F4 /* Pods_GovermentApiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4FAA025EA885448DCDC9997 /* Pods_GovermentApiTests.framework */; };
 		CC77DACF97699EF2DB653AA5 /* Pods_GovermentApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 253FC7BB44EE2CC6D44065A7 /* Pods_GovermentApi.framework */; };
+		CE9F1A832B31485000D0F4DD /* Goverment_LoginNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F1A822B31485000D0F4DD /* Goverment_LoginNetworkManager.swift */; };
+		CE9F1A852B314E2000D0F4DD /* Goverment_LoginNetworkManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F1A842B314E2000D0F4DD /* Goverment_LoginNetworkManagerMock.swift */; };
 		CEAE1DDE2B2976FA00B20188 /* GovermentSplashTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE1DDD2B2976FA00B20188 /* GovermentSplashTest.swift */; };
 		CEB2FA132B294417008E183E /* Goverment_Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA122B294417008E183E /* Goverment_Alert.swift */; };
 		CEB2FA152B294EE3008E183E /* Goverment_NetworkAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2FA142B294EE3008E183E /* Goverment_NetworkAvailable.swift */; };
@@ -64,6 +66,7 @@
 		CED962DF2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962DE2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift */; };
 		CED962E12B2C07D200DAF5BE /* GovermentDetailsMainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962E02B2C07D200DAF5BE /* GovermentDetailsMainTest.swift */; };
 		CED962E52B2C228200DAF5BE /* GovermentTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED962E42B2C228200DAF5BE /* GovermentTableViewCellTest.swift */; };
+		CED993F52B320D99003CF7A5 /* Goverment_LoginNetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED993F42B320D99003CF7A5 /* Goverment_LoginNetworkManagerTest.swift */; };
 		CEF193552B2CEED8001136C6 /* Goverment_Lottie_faceBiometric.json in Resources */ = {isa = PBXBuildFile; fileRef = CEF193542B2CEED8001136C6 /* Goverment_Lottie_faceBiometric.json */; };
 		CEF193572B2CF172001136C6 /* Goverment_Lottie_FingerBiometric.json in Resources */ = {isa = PBXBuildFile; fileRef = CEF193562B2CF172001136C6 /* Goverment_Lottie_FingerBiometric.json */; };
 /* End PBXBuildFile section */
@@ -83,6 +86,8 @@
 		3A75FD8BDB67388D11D6D269 /* Pods-GovermentApiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GovermentApiTests.release.xcconfig"; path = "Target Support Files/Pods-GovermentApiTests/Pods-GovermentApiTests.release.xcconfig"; sourceTree = "<group>"; };
 		468E0C609F8B3C63B21C0DC2 /* Pods-GovermentApi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GovermentApi.debug.xcconfig"; path = "Target Support Files/Pods-GovermentApi/Pods-GovermentApi.debug.xcconfig"; sourceTree = "<group>"; };
 		784D33CFA47485B65D93DDFC /* Pods-GovermentApi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GovermentApi.release.xcconfig"; path = "Target Support Files/Pods-GovermentApi/Pods-GovermentApi.release.xcconfig"; sourceTree = "<group>"; };
+		CE9F1A822B31485000D0F4DD /* Goverment_LoginNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_LoginNetworkManager.swift; sourceTree = "<group>"; };
+		CE9F1A842B314E2000D0F4DD /* Goverment_LoginNetworkManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_LoginNetworkManagerMock.swift; sourceTree = "<group>"; };
 		CEAE1DDB2B2976FA00B20188 /* GovermentApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GovermentApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAE1DDD2B2976FA00B20188 /* GovermentSplashTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentSplashTest.swift; sourceTree = "<group>"; };
 		CEB2FA122B294417008E183E /* Goverment_Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_Alert.swift; sourceTree = "<group>"; };
@@ -141,6 +146,7 @@
 		CED962DE2B2C065A00DAF5BE /* GovermentHomeRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentHomeRouterTest.swift; sourceTree = "<group>"; };
 		CED962E02B2C07D200DAF5BE /* GovermentDetailsMainTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentDetailsMainTest.swift; sourceTree = "<group>"; };
 		CED962E42B2C228200DAF5BE /* GovermentTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GovermentTableViewCellTest.swift; sourceTree = "<group>"; };
+		CED993F42B320D99003CF7A5 /* Goverment_LoginNetworkManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goverment_LoginNetworkManagerTest.swift; sourceTree = "<group>"; };
 		CEF193542B2CEED8001136C6 /* Goverment_Lottie_faceBiometric.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Goverment_Lottie_faceBiometric.json; sourceTree = "<group>"; };
 		CEF193562B2CF172001136C6 /* Goverment_Lottie_FingerBiometric.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Goverment_Lottie_FingerBiometric.json; sourceTree = "<group>"; };
 		D1393A45724C7575A49EEBFD /* Pods-GovermentApiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GovermentApiTests.debug.xcconfig"; path = "Target Support Files/Pods-GovermentApiTests/Pods-GovermentApiTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +191,14 @@
 				E4FAA025EA885448DCDC9997 /* Pods_GovermentApiTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE9F1A812B31482700D0F4DD /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE9F1A822B31485000D0F4DD /* Goverment_LoginNetworkManager.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		CEAE1DDC2B2976FA00B20188 /* GovermentApiTests */ = {
@@ -239,6 +253,7 @@
 				CEB2FA162B2954E6008E183E /* GovermentDetails */,
 				CEC4FA0A2B2913BD00C80226 /* Components */,
 				CEC4F9D42B28F4CD00C80226 /* AppDelegate.swift */,
+				CE9F1A812B31482700D0F4DD /* NetworkManager */,
 				CEC4F9DD2B28F4CE00C80226 /* Assets.xcassets */,
 				CEC4F9DF2B28F4CE00C80226 /* LaunchScreen.storyboard */,
 				CED962D02B2BFB6700DAF5BE /* GoogleService-Info.plist */,
@@ -337,6 +352,8 @@
 				CED3F27B2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift */,
 				CED962D62B2C02B200DAF5BE /* GovermentLoginInteractorTest.swift */,
 				CED962D82B2C03C900DAF5BE /* GovermentLoginRouterTest.swift */,
+				CED993F42B320D99003CF7A5 /* Goverment_LoginNetworkManagerTest.swift */,
+				CE9F1A842B314E2000D0F4DD /* Goverment_LoginNetworkManagerMock.swift */,
 			);
 			path = GovermentLogin;
 			sourceTree = "<group>";
@@ -540,7 +557,9 @@
 				CED962D52B2C017500DAF5BE /* GovermentLoginMainTest.swift in Sources */,
 				CED962DB2B2C047200DAF5BE /* GovermentHomeMainTest.swift in Sources */,
 				CED3F28A2B2BAE5E00EC2748 /* GovermentDetailsViewUiTest.swift in Sources */,
+				CED993F52B320D99003CF7A5 /* Goverment_LoginNetworkManagerTest.swift in Sources */,
 				CED962E52B2C228200DAF5BE /* GovermentTableViewCellTest.swift in Sources */,
+				CE9F1A852B314E2000D0F4DD /* Goverment_LoginNetworkManagerMock.swift in Sources */,
 				CED3F27C2B2BA3BD00EC2748 /* GovermentLoginViewTest.swift in Sources */,
 				CED962DD2B2C050600DAF5BE /* GovermentHomePresenterTest.swift in Sources */,
 				CED962D92B2C03C900DAF5BE /* GovermentLoginRouterTest.swift in Sources */,
@@ -570,6 +589,7 @@
 				CEC4FA042B28FAD200C80226 /* GovermentHomeRouter.swift in Sources */,
 				CEC4FA062B28FAD200C80226 /* GovermentHomeMain.swift in Sources */,
 				CEBDA7072B2A6D6600E6B30B /* Goverment_DropdownView.swift in Sources */,
+				CE9F1A832B31485000D0F4DD /* Goverment_LoginNetworkManager.swift in Sources */,
 				CEC4FA1F2B2921EC00C80226 /* GovermentSplashInteractor.swift in Sources */,
 				CED962CF2B2BEB3B00DAF5BE /* String+Extension.swift in Sources */,
 				CEC4FA1C2B2921EC00C80226 /* GovermentSplashRouter.swift in Sources */,
@@ -775,7 +795,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2RHXBRCF87;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GovermentApi/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use biometric authentication to secure your account.";
@@ -811,7 +831,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2RHXBRCF87;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GovermentApi/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use biometric authentication to secure your account.";

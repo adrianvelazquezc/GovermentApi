@@ -20,8 +20,12 @@ final class GovermentLoginViewTest: XCTestCase {
         sut = nil
     }
     
+    func testShouldCallLoadView() {
+        XCTAssertNotNil(sut.loadView())
+    }
+    
     func testShouldCallStatusBarAppearanceUpdate() {
-        sut.setNeedsStatusBarAppearanceUpdate()
+        XCTAssertNotNil(sut.setNeedsStatusBarAppearanceUpdate())
     }
     
     func testShouldStart() {
@@ -64,7 +68,7 @@ final class GovermentLoginViewTest: XCTestCase {
     }
     
     func testNotifyLockInWithFaceBiometrics() {
-        XCTAssertNotNil(sut.notifyLockInWithFaceBiometrics)
+        XCTAssertNotNil(sut.notifyLockInWithFaceBiometrics())
     }
     
     func testNotifyShowError() {

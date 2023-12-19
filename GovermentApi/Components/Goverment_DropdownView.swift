@@ -107,7 +107,7 @@ open class Goverment_DropdownView: UIView {
             scrollView.widthAnchor.constraint(equalTo: reference.widthAnchor),
             scrollViewHeightConstraint,
             
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 5),
             stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),

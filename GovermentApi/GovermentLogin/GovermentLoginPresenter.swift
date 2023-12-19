@@ -79,4 +79,9 @@ extension GovermentLoginPresenter: GovermentLoginPresenterProtocol {
         view?.dissmissLoading()
         view?.notifyError(error: error)
     }
+    
+    func requestGoToNextView() {
+        view?.dissmissLoading()
+        router?.navigateToNextView()
+    }
 }

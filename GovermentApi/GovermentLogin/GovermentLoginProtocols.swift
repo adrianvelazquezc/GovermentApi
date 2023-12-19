@@ -41,6 +41,7 @@ protocol GovermentLoginPresenterProtocol: AnyObject {
     
     func responseErrorInfo(error: String)
     func isUserAlredyLoggedIn() -> Bool
+    func requestGoToNextView()
 }
 
 protocol GovermentLoginRouterProtocol: AnyObject {

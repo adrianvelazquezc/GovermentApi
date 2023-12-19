@@ -57,5 +57,7 @@ final class GovermentLoginPresenterTest: XCTestCase {
         XCTAssertNotNil(sut.requestLoginWithFaceBiometrics(present: UIViewController()))
     }
     
-
+    func testShouldCallRequestGoToNextView() {
+        XCTAssertNotNil(sut.requestGoToNextView())
+    }
 }

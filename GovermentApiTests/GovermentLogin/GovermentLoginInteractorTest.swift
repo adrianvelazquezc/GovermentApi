@@ -11,9 +11,11 @@ import XCTest
 final class GovermentLoginInteractorTest: XCTestCase {
     var sut: GovermentLoginInteractor!
     var userInfoMock: UserInfo!
+    var networkManagerMock: Goverment_LoginNetworkManagerMock!
     
     override func setUpWithError() throws {
-        sut = GovermentLoginInteractor()
+        networkManagerMock = Goverment_LoginNetworkManagerMock()
+        sut = GovermentLoginInteractor(authenticationManager: networkManagerMock)
         userInfoMock = UserInfo(userMail: "ab@test.com", userPassword: "123456")
     }
 
@@ -22,18 +24,38 @@ final class GovermentLoginInteractorTest: XCTestCase {
     }
     
     func testShouldCallLoginUser() {
-        XCTAssertNotNil(sut.authenticateUserLogin(userInfo: UserInfo(userMail: "b@gmail.com", userPassword: "123456")))
+        XCTAssertNotNil(sut.authenticateUserLogin(userInfo: userInfoMock))
     }
     
     func testShouldCallPostNewUser() {
         XCTAssertNotNil(sut.postNewUser(userInfo: userInfoMock))
     }
     
-    func testShouldCallAuthenticateUserLogin() {
+    func testShouldCallAuthenticateFaceBiometricsLogin() {
+        XCTAssertNotNil(sut.authenticateFaceBiometricsLogin())
+    }
+    
+    func testShouldCallFetchLognInWithGoogle(){
+        XCTAssertNotNil(sut.fetchLognInWithGoogle(present: UIViewController(), clientID: nil))
+    }
+    
+    func testShouldCallLoginUserWithError() {
+        networkManagerMock.authenticationSuccess = false
         XCTAssertNotNil(sut.authenticateUserLogin(userInfo: userInfoMock))
     }
     
-    func testShouldCallAuthenticateFaceBiometricsLogin() {
+    func testShouldCallPostNewUserWithError() {
+        networkManagerMock.authenticationSuccess = false
+        XCTAssertNotNil(sut.postNewUser(userInfo: userInfoMock))
+    }
+    
+    func testShouldCallAuthenticateFaceBiometricsLoginWithError() {
+        networkManagerMock.authenticationSuccess = false
         XCTAssertNotNil(sut.authenticateFaceBiometricsLogin())
+    }
+    
+    func testShouldCallFetchLognInWithGoogleWithError(){
+        networkManagerMock.authenticationSuccess = false
+        XCTAssertNotNil(sut.fetchLognInWithGoogle(present: UIViewController(), clientID: nil))
     }
 }
