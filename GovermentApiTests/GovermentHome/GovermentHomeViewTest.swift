@@ -10,10 +10,22 @@ import XCTest
 
 final class GovermentHomeViewTest: XCTestCase {
     var sut: GovermentHomeView!
+    var mockElementDetail: Result!
     
     override func setUpWithError() throws {
         sut = GovermentHomeView()
         sut.view = UIView()
+        mockElementDetail = Result(id: "",
+                                  dateInsert: "",
+                                  slug: "",
+                                  columns: "",
+                                  fact: "",
+                                  organization: "",
+                                  resource: "",
+                                  url: "",
+                                  operations: "",
+                                  dataset: "",
+                                  createdAt: 0)
     }
     
     override func tearDownWithError() throws {
@@ -25,17 +37,6 @@ final class GovermentHomeViewTest: XCTestCase {
     }
     
     func testShoudLoadView() {
-        let mockElementDetail = Result(id: "",
-                                       dateInsert: "",
-                                       slug: "",
-                                       columns: "",
-                                       fact: "",
-                                       organization: "",
-                                       resource: "",
-                                       url: "",
-                                       operations: "",
-                                       dataset: "",
-                                       createdAt: 0)
         sut.dataInfo = Response(pagination: Pagination(pageSize: 1, page: 1, total: 1), results: [mockElementDetail])
         XCTAssertNotNil(sut.loadView())
     }
@@ -63,9 +64,34 @@ final class GovermentHomeViewTest: XCTestCase {
         XCTAssertFalse(Goverment_ActivityIndicator.isLoading(), "Loading indicator should not be animating after dismissal")
     }
     
+    func testShoudNotifyGetFilterStringIdCase() {
+        sut.view = UIView()
+        sut.ui = GovermentHomeViewUI(
+            navigation: UINavigationController(),
+            delegate: nil,
+            responseData: [mockElementDetail])
+        sut.ui?.currentSearch = .id
+        XCTAssertNotNil(sut.notifyGetFilterString(filter: "id"))
+    }
     
-    func testShoudNotifyGetFilterString() {
-        XCTAssertNotNil(sut.notifyGetFilterString(filter: "abc"))
+    func testShoudNotifyGetFilterStringOrganizationCase() {
+        sut.view = UIView()
+        sut.ui = GovermentHomeViewUI(
+            navigation: UINavigationController(),
+            delegate: nil,
+            responseData: [mockElementDetail])
+        sut.ui?.currentSearch = .organization
+        XCTAssertNotNil(sut.notifyGetFilterString(filter: "organization"))
+    }
+    
+    func testShoudNotifyGetFilterStringUrlLabelCase() {
+        sut.view = UIView()
+        sut.ui = GovermentHomeViewUI(
+            navigation: UINavigationController(),
+            delegate: nil,
+            responseData: [mockElementDetail])
+        sut.ui?.currentSearch = .urlLabel
+        XCTAssertNotNil(sut.notifyGetFilterString(filter: "urlLabel"))
     }
     
     func testShoudNotifyGetEmptyFilterString() {
@@ -102,5 +128,4 @@ final class GovermentHomeViewTest: XCTestCase {
         sut.dataInfo = Response(pagination: Pagination(pageSize: 1, page: 1, total: 1), results: [mockElementDetail])
         XCTAssertNotNil(sut.addNewValues())
     }
-    
 }

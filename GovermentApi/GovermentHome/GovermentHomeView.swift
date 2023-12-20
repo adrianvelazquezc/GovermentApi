@@ -9,7 +9,7 @@ import UIKit
 
 class GovermentHomeView: UIViewController {
     var presenter: GovermentHomePresenterProtocol?
-    private var ui: GovermentHomeViewUI?
+    var ui: GovermentHomeViewUI?
     var dataInfo: Response?
     internal var counterList = 20
     

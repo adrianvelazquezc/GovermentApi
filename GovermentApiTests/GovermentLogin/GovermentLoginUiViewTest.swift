@@ -49,10 +49,30 @@ final class GovermentLoginUiViewTest: XCTestCase {
         XCTAssertNotNil(sut.googleTapped(UIButton()))
     }
     
-    func testShouldChangeInputText() {
+    func testShouldChangeDiasableInputText() {
+        let mockTextfield = sut.userlMailTextField
+        mockTextfield.text = nil
+        XCTAssertNotNil(sut.textFieldDidChangeSelection(mockTextfield))
+    }
+    
+    func testShouldChangeEnableyInputText() {
         let mockTextfield = sut.userlMailTextField
         mockTextfield.text = "change"
         XCTAssertNotNil(sut.textFieldDidChangeSelection(mockTextfield))
+    }
+    
+    
+    func testShouldChangeCharactersInTag0() {
+        let textField1 = UITextField()
+        let result1 = sut.textField(textField1, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "test")
+        XCTAssertTrue(result1)
+    }
+    
+    func testShouldChangeCharactersInTag1() {
+        let textField2 = UITextField()
+        textField2.tag = 1
+        let result1 = sut.textField(textField2, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "test")
+        XCTAssertTrue(result1)
     }
     
     func testShouldNotChangeInputTextWhenButtonDisabled() {

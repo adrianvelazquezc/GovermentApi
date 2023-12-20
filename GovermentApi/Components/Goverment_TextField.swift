@@ -38,13 +38,9 @@ class Goverment_TextField: UITextField {
                 .foregroundColor: UIColor.gray
             ]
             attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: attributes)
-        } else {
-            let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor.black
-            ]
-            attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: attributes)
         }
     }
+    
     public func updatePlaceholderTextWith(_ newText: String) {
         placeholder = newText
     }

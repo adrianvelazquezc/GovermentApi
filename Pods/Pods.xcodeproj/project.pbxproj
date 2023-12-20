@@ -22209,7 +22209,7 @@
 			baseConfigurationReference = A9D56FC427BC5A4D9654F6E85C809672 /* GoogleSignIn.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
-				DEVELOPMENT_TEAM = 2RHXBRCF87;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -22393,7 +22393,7 @@
 			baseConfigurationReference = 337868E504360F0E3327C10C3A20C092 /* gRPC-C++.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
-				DEVELOPMENT_TEAM = 2RHXBRCF87;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = grpcpp;
 				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -22689,7 +22689,7 @@
 			baseConfigurationReference = 6BBCF850766A183650F8C946B926BF29 /* GoogleSignIn.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
-				DEVELOPMENT_TEAM = 2RHXBRCF87;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -23045,7 +23045,7 @@
 			baseConfigurationReference = 4E0DDBA20C0CF15A7113B52A1C81F8AC /* gRPC-C++.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
-				DEVELOPMENT_TEAM = 2RHXBRCF87;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = grpcpp;
 				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
