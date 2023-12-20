@@ -13,10 +13,6 @@ protocol GovermentHomeViewProtocol: AnyObject {
     func dissmissLoading()
 }
 
-protocol GovermentHomeInteractorProtocol: AnyObject {
-    
-}
-
 protocol GovermentHomePresenterProtocol: AnyObject {
     func requestElementDetails(element: Result)
 }

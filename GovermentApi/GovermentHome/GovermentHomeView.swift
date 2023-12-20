@@ -61,7 +61,7 @@ extension GovermentHomeView: GovermentHomeViewUIDelegate {
                     tempList.append(noNilInfo.results[index])
                 }
             }
-
+            
             guard counterList < noNilInfo.pagination.total else {
                 ui?.isSendingRequest = false
                 return
@@ -70,7 +70,7 @@ extension GovermentHomeView: GovermentHomeViewUIDelegate {
             counterList = endIndex
         }
     }
-
+    
     
     func notifyGetFilterString(filter: String) {
         if filter.isEmpty {
@@ -85,7 +85,7 @@ extension GovermentHomeView: GovermentHomeViewUIDelegate {
                 case .urlLabel:
                     ui.elementList = ui.originalElementList.filter { $0.url.localizedCaseInsensitiveContains(filter) }
                 }
-            } 
+            }
         }
         ui?.tableView.reloadData()
     }

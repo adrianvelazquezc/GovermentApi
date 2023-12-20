@@ -9,7 +9,6 @@ import UIKit
 import CoreLocation
 
 class GovermentDetailsView: UIViewController {
-    var presenter: GovermentDetailsPresenterProtocol?
     private var ui: GovermentDetailsViewUI?
     internal var elementDetail: Result?
     let locationManager = CLLocationManager()
@@ -44,9 +43,6 @@ class GovermentDetailsView: UIViewController {
     }
 }
 
-extension GovermentDetailsView: GovermentDetailsViewProtocol {
-    
-}
 
 extension GovermentDetailsView: GovermentDetailsViewUIDelegate {
     func notifyShareInfoToWhatsapp(info: String) {

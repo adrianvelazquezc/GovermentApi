@@ -53,5 +53,5 @@ open class Goverment_ActivityIndicator {
     
     public static func isLoading() -> Bool {
         return gobIndicator.isAnimating
-        }
+    }
 }

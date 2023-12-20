@@ -130,7 +130,7 @@ extension GovermentHomeViewUI: UITableViewDelegate,  UITableViewDataSource {
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-
+        
         if distanceFromBottom - 100 < height && !isSendingRequest {
             isSendingRequest = true
             delegate?.addNewValues()

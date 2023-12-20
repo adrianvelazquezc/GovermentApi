@@ -8,12 +8,9 @@
 import Foundation
 
 class GovermentHomePresenter {
-    var interactor: GovermentHomeInteractorProtocol?
     weak var view: GovermentHomeViewProtocol?
     var router: GovermentHomeRouterProtocol?
 }
-
-
 
 extension GovermentHomePresenter: GovermentHomePresenterProtocol {
     func requestElementDetails(element: Result) {

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct UserInfo {
     let userMail: String
     let userPassword: String

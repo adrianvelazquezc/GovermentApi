@@ -25,7 +25,7 @@ public struct Result: Codable {
     let operations: String
     let dataset: String
     let createdAt: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case dateInsert = "date_insert"

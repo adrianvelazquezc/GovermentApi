@@ -282,8 +282,8 @@ extension GovermentLoginViewUI: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            if textField.tag == 1 {
-                if string == "@" && (textField.text?.contains("@") ?? false) || textField.text?.count ?? 0 > 30 {
+        if textField.tag == 1 {
+            if string == "@" && (textField.text?.contains("@") ?? false) || textField.text?.count ?? 0 > 30 {
                 return false
             }
             let allowedCharacters = CharacterSet(charactersIn: "@.! # $ % & ' * + - / = ? ^ _ ` { | } ~")
